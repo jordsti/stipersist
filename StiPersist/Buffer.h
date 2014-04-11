@@ -1,7 +1,7 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include <list>
+#include <vector>
 #include "Chunk.h"
 
 namespace StiPersist
@@ -19,10 +19,13 @@ namespace StiPersist
 			
 			void clear(void);
 		
+			Chunk* getChunk(int index);
+			int getChunkCount(void);
+		
 			Chunk* getChunk(void);
 			unsigned int count(void);
 		protected:
-			std::list<Chunk*> chunks;
+			std::vector<Chunk*> chunks;
 		};
 	}
 }

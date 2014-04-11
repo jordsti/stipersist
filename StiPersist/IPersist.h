@@ -3,6 +3,7 @@
 
 #include "Field.h"
 #include <list>
+#include "Resolver.h"
 
 namespace StiPersist
 {
@@ -13,7 +14,7 @@ namespace StiPersist
 		virtual ~IPersist();
 		
 		virtual void save(std::string destination);
-		
+		virtual void load(std::string source);
 	protected:
 		IPersist();
 		bool isPopulated(void);
@@ -25,6 +26,7 @@ namespace StiPersist
 		
 		std::list<Data::Field*> fields;
 	private:
+		Resolver *resolver;
 		bool populated;
 	
 	};

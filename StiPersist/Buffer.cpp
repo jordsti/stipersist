@@ -1,5 +1,5 @@
 #include "Buffer.h"
-
+#include <iostream>
 namespace StiPersist
 {
 	namespace Data
@@ -19,9 +19,20 @@ namespace StiPersist
 			chunks.push_back(chunk);
 		}
 		
+		Chunk* Buffer::getChunk(int index)
+		{
+			return chunks[index];
+		}
+		
+		int Buffer::getChunkCount(void)
+		{
+			return chunks.size();
+		}
+		
+		
 		void Buffer::clear(void)
 		{
-			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
+			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			for(;lit!=lend;++lit)
 			{
 				delete (*lit);
@@ -35,8 +46,8 @@ namespace StiPersist
 			unsigned int length = count();
 			unsigned int current = 0;
 			char *data = new char[length];
+			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			
-			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			for(;lit!=lend;++lit)
 			{
 				char *c_data = (*lit)->getData();
@@ -58,7 +69,7 @@ namespace StiPersist
 		{
 			unsigned int length = 0;
 			
-			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
+			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			for(;lit!=lend;++lit)
 			{
 				length += (*lit)->getLength();

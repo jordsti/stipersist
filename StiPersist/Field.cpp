@@ -1,5 +1,5 @@
 #include "Field.h"
-
+#include <iostream>
 namespace StiPersist
 {
 	namespace Data
@@ -23,7 +23,7 @@ namespace StiPersist
 	
 		Chunk* Field::getNameChunk(void)
 		{
-			return ChunkFromString(name);
+			return Chunk::FromString(name);
 		}
 		
 		FieldMarker* Field::getMarker(void)

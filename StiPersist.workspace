@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="StiPersist">
+		<Project filename="StiPersist/StiPersist.cbp" />
 		<Project filename="test/test.cbp">
 			<Depends filename="StiPersist/StiPersist.cbp" />
 		</Project>
-		<Project filename="StiPersist/StiPersist.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

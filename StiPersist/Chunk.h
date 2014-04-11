@@ -32,15 +32,18 @@ namespace StiPersist
 			ChunkMarker* getMarker(void);
 			
 			virtual ~Chunk();
+			
+			std::string toString(void);
+			
+			static Chunk* FromString(std::string text);
+			static Chunk* FromFieldMarker(FieldMarker *marker);
+			static Chunk* FromChunkMarker(ChunkMarker *marker);
 		private:
 			bool clearData;
 			char *data;
 			unsigned int length;
 		};
 		
-		
-		Chunk* ChunkFromString(std::string text);
-		Chunk* ChunkFromFieldMarker(FieldMarker *marker);
 	}
 
 }

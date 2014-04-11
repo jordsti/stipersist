@@ -10,12 +10,15 @@ namespace StiPersist
 	{
 		struct FieldMarker {
 			int type;
+			int nameLength;
+			int dataLength;
 		};
 	
 		enum FieldType {
 			FT_UNDEFINED = -1024,
 			FT_INTEGER = 1,
-			FT_STRING = 2
+			FT_STRING = 2,
+			FT_EOF = 4096
 		};
 	
 		class Field
