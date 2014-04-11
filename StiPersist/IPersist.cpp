@@ -28,8 +28,9 @@ namespace StiPersist
 		Data::Chunk *nameChunk;
 		Data::Chunk *dataChunk;
 		
-		std::ifstream infile (source.c_str(), std::ifstream::binary);
+		std::ifstream infile (source.c_str(), std::ifstream::binary | std::ifstream::in);
 		infile.seekg(0, infile.beg);
+		std::cout <<  "Pos : " << infile.tellg() << std::endl;
 		infile.read((char*)marker, sizeof(Data::FieldMarker));
 		std::cout << "marker type (read) : " << marker->type << std::endl;
 		
@@ -69,11 +70,11 @@ namespace StiPersist
 		_populateFields();
 		
 		Data::Buffer buffer = Data::Buffer();
-		Data::FieldMarker *marker = new Data::FieldMarker();
-		
+
 		std::list<Data::Field*>::iterator lit(fields.begin()), lend(fields.end());
 		for(;lit!=lend;++lit)
 		{
+			Data::FieldMarker *marker = new Data::FieldMarker();
 			Data::Chunk *nameChunk;
 			Data::Chunk *dataChunk;
 			Data::Chunk *markerChunk;
@@ -87,18 +88,18 @@ namespace StiPersist
 			marker->dataLength = dataChunk->getLength();
 			
 			markerChunk = Data::Chunk::FromFieldMarker(marker);
-			std::cout << "marker type : " << marker->type << std::endl;
 			
 			buffer.append(markerChunk);
 			buffer.append(nameChunk);
 			buffer.append(dataChunk);
 		}
 		
-		marker->type = Data::FT_EOF;
-		marker->nameLength = 0;
-		marker->dataLength = 0;
+		Data::FieldMarker *endMarker = new Data::FieldMarker();
+		endMarker->type = Data::FT_EOF;
+		endMarker->nameLength = 0;
+		endMarker->dataLength = 0;
 		
-		Data::Chunk *endMarkerChunk = Data::Chunk::FromFieldMarker(marker);
+		Data::Chunk *endMarkerChunk = Data::Chunk::FromFieldMarker(endMarker);
 		
 		buffer.append(endMarkerChunk);
 		
@@ -120,7 +121,7 @@ namespace StiPersist
 		buffer.clear();
 
 		delete main_chunk;
-		delete marker;
+		delete endMarker;
 	}
 	
 	void IPersist::_populateFields(void)

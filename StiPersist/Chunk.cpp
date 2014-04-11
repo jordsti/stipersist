@@ -73,7 +73,7 @@ namespace StiPersist
 		{
 			unsigned int length = sizeof(FieldMarker);
 			char *data = reinterpret_cast<char*>(marker);
-			
+
 			Chunk *chunk = new Chunk(data, length);
 			return chunk;
 		}

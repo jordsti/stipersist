@@ -19,10 +19,10 @@ namespace StiPersist
 			chunks.push_back(chunk);
 		}
 		
-		Chunk* Buffer::getChunk(int index)
+		/*Chunk* Buffer::getChunk(int index)
 		{
 			return chunks[index];
-		}
+		}*/
 		
 		int Buffer::getChunkCount(void)
 		{
@@ -32,7 +32,7 @@ namespace StiPersist
 		
 		void Buffer::clear(void)
 		{
-			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
+			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			for(;lit!=lend;++lit)
 			{
 				delete (*lit);
@@ -46,7 +46,7 @@ namespace StiPersist
 			unsigned int length = count();
 			unsigned int current = 0;
 			char *data = new char[length];
-			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
+			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			
 			for(;lit!=lend;++lit)
 			{
@@ -59,8 +59,10 @@ namespace StiPersist
 				}
 				
 				current += c_length;
+				std::cout << " C L : " << c_length << std::endl;
+				std::cout << " C : " << current << std::endl;
 			}
-			
+			std::cout << " l : " << length << std::endl;
 			Chunk *chunk = new Chunk(data, length);
 			return chunk;
 		}
@@ -69,7 +71,7 @@ namespace StiPersist
 		{
 			unsigned int length = 0;
 			
-			std::vector<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
+			std::list<Chunk*>::iterator lit(chunks.begin()), lend(chunks.end());
 			for(;lit!=lend;++lit)
 			{
 				length += (*lit)->getLength();
