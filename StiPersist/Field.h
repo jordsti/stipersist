@@ -15,9 +15,16 @@ namespace StiPersist
 		};
 	
 		enum FieldType {
+			//undefined..
 			FT_UNDEFINED = -1024,
+			//numeric fields
 			FT_INTEGER = 1,
-			FT_STRING = 2,
+			FT_FLOAT = 2,
+			//string fields
+			FT_STRING = 1024,
+			//complex field
+			FT_OBJECT = 2048,
+			//End of file
 			FT_EOF = 4096
 		};
 	

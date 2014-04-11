@@ -1,15 +1,16 @@
 #include "IPersist.h"
 #include <iostream>
 #include <fstream>
-#include "Buffer.h"
 #include "DefaultResolver.h"
 
 namespace StiPersist
 {
+	Resolver* IPersist::_defaultResolver = new DefaultResolver();
+
 	IPersist::IPersist()
 	{
 		populated = false;
-		resolver = new DefaultResolver();
+		resolver = _defaultResolver;
 	}
 
 	IPersist::~IPersist()
@@ -22,6 +23,47 @@ namespace StiPersist
 		return populated;
 	}
 	
+	Data::Buffer* IPersist::getChunkBuffer(void)
+	{
+		_populateFields();
+		
+		Data::Buffer *buffer = new Data::Buffer();
+
+		std::list<Data::Field*>::iterator lit(fields.begin()), lend(fields.end());
+		for(;lit!=lend;++lit)
+		{
+			Data::FieldMarker *marker = new Data::FieldMarker();
+			Data::Chunk *nameChunk;
+			Data::Chunk *dataChunk;
+			Data::Chunk *markerChunk;
+		
+			marker->type = (*lit)->getType();
+
+			nameChunk = (*lit)->getNameChunk();
+			dataChunk = (*lit)->getDataChunk();
+			
+			marker->nameLength = nameChunk->getLength();
+			marker->dataLength = dataChunk->getLength();
+			
+			markerChunk = Data::Chunk::FromFieldMarker(marker);
+			
+			buffer->append(markerChunk);
+			buffer->append(nameChunk);
+			buffer->append(dataChunk);
+		}
+		
+		Data::FieldMarker *endMarker = new Data::FieldMarker();
+		endMarker->type = Data::FT_EOF;
+		endMarker->nameLength = 0;
+		endMarker->dataLength = 0;
+		
+		Data::Chunk *endMarkerChunk = Data::Chunk::FromFieldMarker(endMarker);
+		
+		buffer->append(endMarkerChunk);
+		
+		return buffer;
+	}
+	
 	void IPersist::load(std::string source)
 	{
 		Data::FieldMarker *marker = new Data::FieldMarker();
@@ -30,10 +72,9 @@ namespace StiPersist
 		
 		std::ifstream infile (source.c_str(), std::ifstream::binary | std::ifstream::in);
 		infile.seekg(0, infile.beg);
-		std::cout <<  "Pos : " << infile.tellg() << std::endl;
+
 		infile.read((char*)marker, sizeof(Data::FieldMarker));
-		std::cout << "marker type (read) : " << marker->type << std::endl;
-		
+	
 		while(marker->type != Data::FT_EOF)
 		{	
 			char *n_data = new char[marker->nameLength];
@@ -62,66 +103,26 @@ namespace StiPersist
 		delete marker;
 		
 		infile.close();
+		
+		_fromFields();
 	}
 	
 	void IPersist::save(std::string destination)
 	{
-		std::cout << "Saving..." << std::endl;
-		_populateFields();
-		
-		Data::Buffer buffer = Data::Buffer();
-
-		std::list<Data::Field*>::iterator lit(fields.begin()), lend(fields.end());
-		for(;lit!=lend;++lit)
-		{
-			Data::FieldMarker *marker = new Data::FieldMarker();
-			Data::Chunk *nameChunk;
-			Data::Chunk *dataChunk;
-			Data::Chunk *markerChunk;
-		
-			marker->type = (*lit)->getType();
-			std::cout << "Marker type (fields) :" << marker->type << std::endl;
-			nameChunk = (*lit)->getNameChunk();
-			dataChunk = (*lit)->getDataChunk();
-			
-			marker->nameLength = nameChunk->getLength();
-			marker->dataLength = dataChunk->getLength();
-			
-			markerChunk = Data::Chunk::FromFieldMarker(marker);
-			
-			buffer.append(markerChunk);
-			buffer.append(nameChunk);
-			buffer.append(dataChunk);
-		}
-		
-		Data::FieldMarker *endMarker = new Data::FieldMarker();
-		endMarker->type = Data::FT_EOF;
-		endMarker->nameLength = 0;
-		endMarker->dataLength = 0;
-		
-		Data::Chunk *endMarkerChunk = Data::Chunk::FromFieldMarker(endMarker);
-		
-		buffer.append(endMarkerChunk);
+		Data::Buffer *buffer = getChunkBuffer();
 		
 		std::ofstream outfile (destination.c_str(), std::ofstream::binary);
-
-		/*for(int i=0; i<buffer.getChunkCount(); i++)
-		{
-			Data::Chunk *chunk = buffer.getChunk(i);
-			outfile.write(chunk->getData(), chunk->getLength());
-			outfile.flush();
-		}*/
 		
-		Data::Chunk *main_chunk = buffer.getChunk();
+		Data::Chunk *main_chunk = buffer->getChunk();
 		
 		outfile.write(main_chunk->getData(), main_chunk->getLength());
 		
 		outfile.close();
 
-		buffer.clear();
+		buffer->clear();
 
 		delete main_chunk;
-		delete endMarker;
+		delete buffer;
 	}
 	
 	void IPersist::_populateFields(void)

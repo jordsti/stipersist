@@ -7,6 +7,7 @@ SimpleObject::SimpleObject() : IPersist()
 {
 	integer = 2000;
 	text = "bla bla bla testing one two";
+	fl = 34.34;
 }
 
 SimpleObject::~SimpleObject() {}
@@ -19,8 +20,12 @@ void SimpleObject::populateFields(void)
 	StringField *sfield = new StringField("text");
 	sfield->setText(text);
 	
+	FloatField *ffield = new FloatField("fl");
+	ffield->setFloat(fl);
+	
 	fields.push_back(ifield);
 	fields.push_back(sfield);
+	fields.push_back(ffield);
 }
 
 void SimpleObject::fromFields(void) {}

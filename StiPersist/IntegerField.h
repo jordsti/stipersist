@@ -7,6 +7,11 @@ namespace StiPersist
 {
 	namespace Data
 	{
+		struct IntStruct
+		{
+			int value;
+		};	
+	
 		class IntegerField :
 			public Field
 		{

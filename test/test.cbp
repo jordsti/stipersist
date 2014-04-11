@@ -43,6 +43,8 @@
 		</Linker>
 		<Unit filename="SimpleObject.cpp" />
 		<Unit filename="SimpleObject.h" />
+		<Unit filename="NestedObject.cpp" />
+		<Unit filename="NestedObject.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

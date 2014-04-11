@@ -4,6 +4,7 @@
 #include "Field.h"
 #include <list>
 #include "Resolver.h"
+#include "Buffer.h"
 
 namespace StiPersist
 {
@@ -15,20 +16,23 @@ namespace StiPersist
 		
 		virtual void save(std::string destination);
 		virtual void load(std::string source);
+		
+		Data::Buffer* getChunkBuffer(void);
+		
 	protected:
 		IPersist();
 		bool isPopulated(void);
 		virtual void populateFields(void) = 0;
 		virtual void fromFields(void) = 0;
 		
-		void _populateFields(void);
-		void _fromFields(void);
-		
+		Resolver *resolver;
 		std::list<Data::Field*> fields;
 	private:
-		Resolver *resolver;
+		void _populateFields(void);
+		void _fromFields(void);
+
 		bool populated;
-	
+		static Resolver *_defaultResolver;
 	};
 
 }

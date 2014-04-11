@@ -4,7 +4,7 @@
 #include "IPersist.h"
 #include "StringField.h"
 #include "IntegerField.h"
-
+#include "FloatField.h"
 class SimpleObject : 
 	public StiPersist::IPersist
 {
@@ -17,6 +17,7 @@ protected:
 private:
 	int integer;
 	std::string text;
+	float fl;
 
 };
 

@@ -1,7 +1,7 @@
 #include "DefaultResolver.h"
 #include "StringField.h"
 #include "IntegerField.h"
-
+#include "FloatField.h"
 #include <iostream>
 
 namespace StiPersist
@@ -33,15 +33,24 @@ namespace StiPersist
 			Data::IntegerField *ifield = new Data::IntegerField(name);
 			int ivalue = 0;
 			char *data = dataChunk->getData();
-			ivalue = ivalue | data[3];
-			ivalue = ivalue << 8;
-			ivalue = ivalue | data[2];
-			ivalue = ivalue << 8;
-			ivalue = ivalue | data[1];
-			ivalue = ivalue << 8;
-			ivalue = ivalue | data[0];
+
+			Data::IntStruct *istruct = reinterpret_cast<Data::IntStruct*>(data);
+			ivalue = istruct->value;
 			ifield->setInteger(ivalue);
+			
+			std::cout << "Integer : " << ivalue << std::endl;
+			
 			return ifield;
+		}
+		else if(type == Data::FT_FLOAT)
+		{
+			Data::FloatField *ffield = new Data::FloatField(name);
+			std::cout << "Float" << std::endl;
+			char *data = dataChunk->getData();
+			Data::FloatStruct *fstruct = reinterpret_cast<Data::FloatStruct*>(data);
+			ffield->setFloat(fstruct->value);
+			std::cout << "FL value : " << ffield->getFloat() <<std::endl;
+			return ffield;
 		}
 	
 

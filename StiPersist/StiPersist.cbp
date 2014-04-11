@@ -45,10 +45,14 @@
 		<Unit filename="DefaultResolver.h" />
 		<Unit filename="Field.cpp" />
 		<Unit filename="Field.h" />
+		<Unit filename="FloatField.cpp" />
+		<Unit filename="FloatField.h" />
 		<Unit filename="IPersist.cpp" />
 		<Unit filename="IPersist.h" />
 		<Unit filename="IntegerField.cpp" />
 		<Unit filename="IntegerField.h" />
+		<Unit filename="ObjectField.cpp" />
+		<Unit filename="ObjectField.h" />
 		<Unit filename="StringField.cpp" />
 		<Unit filename="StringField.h" />
 		<Unit filename="Resolver.cpp" />

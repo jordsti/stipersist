@@ -59,10 +59,8 @@ namespace StiPersist
 				}
 				
 				current += c_length;
-				std::cout << " C L : " << c_length << std::endl;
-				std::cout << " C : " << current << std::endl;
 			}
-			std::cout << " l : " << length << std::endl;
+
 			Chunk *chunk = new Chunk(data, length);
 			return chunk;
 		}

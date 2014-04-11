@@ -16,12 +16,13 @@ namespace StiPersist
 		
 		Chunk* IntegerField::getDataChunk(void)
 		{
-			char* data = new char[INTEGER_LENGTH];
+			char* data = new char[sizeof(IntStruct)];
 			
-			data[0] = integer & 0x000000ff;
-			data[1] = (integer & 0x0000ff00) >> 8;
-			data[2] = (integer & 0x00ff0000) >> 16;
-			data[3] = (integer & 0xff000000) >> 24;
+			IntStruct *istruct = new IntStruct();
+			
+			istruct->value = integer;
+			
+			data = reinterpret_cast<char*>(istruct);
 			
 			Chunk *chunk = new Chunk(data, INTEGER_LENGTH);
 			return chunk;
