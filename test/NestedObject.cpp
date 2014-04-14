@@ -8,6 +8,8 @@ NestedObject::NestedObject() :
 {
 	object1 = new SimpleObject();
 	text2 = "ets ets ets ets ets";
+	
+	addChild("object1", object1);
 }
 
 NestedObject::~NestedObject()
@@ -25,9 +27,9 @@ void NestedObject::populateFields(void)
 	StringField *sf = new StringField("text2");
 	sf->setText(text2);
 	
-	ObjectField *of = new ObjectField("object1");
-	of->setObject(object1);
+	/*ObjectField *of = new ObjectField("object1");
+	of->setObject(object1);*/
 	
 	fields.push_back(sf);
-	fields.push_back(of);
+	//fields.push_back(of);
 }

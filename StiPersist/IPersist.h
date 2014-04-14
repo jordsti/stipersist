@@ -22,6 +22,10 @@ namespace StiPersist
 		
 		IPersist* getChild(std::string childName);
 		
+		static void SetDefaultResolver(Resolver *m_resolver);
+		
+		virtual void addField(Data::Field *field);
+		
 	protected:
 		IPersist();
 		bool isPopulated(void);

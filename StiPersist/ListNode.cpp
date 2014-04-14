@@ -10,18 +10,21 @@ namespace StiPersist
 		{
 			element = nullptr;
 			next = nullptr;
+			clearMemory = true;
 		}
 		
 		ListNode::ListNode(IPersist *m_element)
 		{
 			element = m_element;
 			next = nullptr;
+			clearMemory = true;
 		}
 		
 		ListNode::ListNode(IPersist *m_element, ListNode *m_next)
 		{
 			element = m_element;
 			next = m_next;
+			clearMemory = true;
 		}
 		
 		void ListNode::setElement(IPersist *m_element)
@@ -52,6 +55,17 @@ namespace StiPersist
 		bool ListNode::isEmpty(void)
 		{
 			return (element == nullptr);
+		}
+		
+					
+		bool ListNode::getClearMemory(void)
+		{
+			return clearMemory;
+		}
+		
+		void ListNode::setClearMemory(bool m_clearMemory)
+		{
+			clearMemory = m_clearMemory;
 		}
 	}
 

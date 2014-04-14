@@ -6,8 +6,15 @@
 
 namespace StiPersist
 {
+	//static
 	Resolver* IPersist::_defaultResolver = new DefaultResolver();
 
+	void IPersist::SetDefaultResolver(Resolver *m_resolver)
+	{
+		_defaultResolver = m_resolver;
+	}
+	
+	//end static
 	IPersist::IPersist()
 	{
 		populated = false;
@@ -27,6 +34,11 @@ namespace StiPersist
 	void IPersist::addChild(std::string childName, IPersist *child)
 	{
 		childs.insert(std::make_pair(childName, child));
+	}
+	
+	void IPersist::addField(Data::Field *field)
+	{
+		fields.push_back(field);
 	}
 	
 	IPersist* IPersist::getChild(std::string childName)
@@ -97,12 +109,19 @@ namespace StiPersist
 			nameChunk = new Data::Chunk(n_data, marker->nameLength);
 			dataChunk = new Data::Chunk(f_data, marker->dataLength);
 
-			Data::Field *field = resolver->getField(marker->type, nameChunk, dataChunk);
-			
-			if(field != nullptr)
+			if(marker->type == Data::FT_OBJECT)
 			{
-				fields.push_back(field);
-				std::cout << field->getName() << std::endl;
+				resolver->buildObjectField(nameChunk, dataChunk, this);
+			}
+			else
+			{
+				Data::Field *field = resolver->getField(marker->type, nameChunk, dataChunk);
+				
+				if(field != nullptr)
+				{
+					fields.push_back(field);
+					std::cout << field->getName() << std::endl;
+				}
 			}
 			
 			delete nameChunk;

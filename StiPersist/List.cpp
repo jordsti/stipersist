@@ -7,11 +7,18 @@ namespace StiPersist
 		List::List()
 		{
 			first = nullptr;
+			clearMemory = true;
 		}
 		
 		List::~List()
 		{
 			//to be analyzed
+		}
+		
+		void List::clear(void)
+		{
+			first = nullptr;
+			//must add an attribute clearMemory to delete all node
 		}
 		
 		ListNode* List::getFirst(void)
@@ -235,6 +242,17 @@ namespace StiPersist
 		bool List::isEmpty(void)
 		{
 			return (first == nullptr);
+		}
+		
+					
+		void List::setClearMemory(bool m_clearMemory)
+		{
+			clearMemory = m_clearMemory;
+		}
+		
+		bool List::getClearMemory(void)
+		{
+			return clearMemory;
 		}
 	}
 }

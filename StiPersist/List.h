@@ -16,6 +16,8 @@ namespace StiPersist
 			ListNode* getFirst(void);
 			ListNode* get(int index);
 			
+			void clear(void);
+			
 			void append(ListNode *node);
 			void append(IPersist *element);
 			void append(List *list);
@@ -34,8 +36,12 @@ namespace StiPersist
 			int size(void);
 			
 			bool isEmpty(void);
+			
+			void setClearMemory(bool m_clearMemory);
+			bool getClearMemory(void);
 		private:
 			ListNode *first;
+			bool clearMemory;
 		};
 	}
 

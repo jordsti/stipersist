@@ -51,6 +51,8 @@
 		<Unit filename="IPersist.h" />
 		<Unit filename="IntegerField.cpp" />
 		<Unit filename="IntegerField.h" />
+		<Unit filename="MapNode.cpp" />
+		<Unit filename="MapNode.h" />
 		<Unit filename="ObjectField.cpp" />
 		<Unit filename="ObjectField.h" />
 		<Unit filename="List.cpp" />

@@ -24,9 +24,14 @@ namespace StiPersist
 		
 			bool hasNext(void);
 			bool isEmpty(void);
+			
+			bool getClearMemory(void);
+			void setClearMemory(bool m_clearMemory);
+			
 		private:
 			ListNode *next;
 			IPersist *element;
+			bool clearMemory;
 		};
 	
 	}

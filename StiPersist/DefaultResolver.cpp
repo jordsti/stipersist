@@ -14,6 +14,51 @@ namespace StiPersist
 	void DefaultResolver::buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, IPersist *parent)
 	{
 		//todo
+		std::string name = nameChunk->toString();
+		
+		IPersist *child = parent->getChild(name);
+		
+		if(child != nullptr)
+		{
+			char *data = dataChunk->getData();
+			unsigned int length = dataChunk->getLength();
+			unsigned int current = 0;
+			Data::FieldMarker *marker;
+			int m_size = sizeof(Data::FieldMarker);
+			
+			char *fm_buffer = new char[m_size];
+			
+			for(int i=0; i<m_size; i++)
+			{
+				fm_buffer[i] = data[i];
+			}
+			
+			marker = reinterpret_cast<Data::FieldMarker*>(fm_buffer);
+			
+			current += m_size;
+			
+			while(marker->type != Data::FT_EOF)
+			{
+				char *f_name = new char[marker->nameLength];
+				char *f_data = new char[marker->dataLength];
+				//reading name
+				
+				
+				//reading data
+				
+				
+				
+				//reading next marker
+				for(int i=0; i<m_size; i++)
+				{
+					fm_buffer[i] = data[current+i];
+				}
+				
+				marker = reinterpret_cast<Data::FieldMarker*>(fm_buffer);
+				current += m_size;
+			}
+			
+		}
 	}
 	
 	Data::Field* DefaultResolver::getField(int type, Data::Chunk *nameChunk, Data::Chunk *dataChunk)

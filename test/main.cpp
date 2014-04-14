@@ -70,6 +70,21 @@ int main(int argc, char** argv)
 	
 	std::cout << "List size : " << list->size() << std::endl;
 	
+	ListNode *last = list->pop();
+	
+	std::cout << (dynamic_cast<ListObject*>(last->getElement()))->getValue() << " Pop " << std::endl;
+	
+	current = list->getFirst();
+	//ListNode *current = first;
+	
+	while(current != nullptr)
+	{
+		int value = (dynamic_cast<ListObject*>( current->getElement() ))->getValue();
+		std::cout << "\t -> " << value << std::endl;
+		current = current->getNext();
+	}
+	
+	
 	/* List
 	*  To Implemented :
 	*	-remove node
