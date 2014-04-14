@@ -53,6 +53,10 @@
 		<Unit filename="IntegerField.h" />
 		<Unit filename="ObjectField.cpp" />
 		<Unit filename="ObjectField.h" />
+		<Unit filename="List.cpp" />
+		<Unit filename="List.h" />
+		<Unit filename="ListNode.cpp" />
+		<Unit filename="ListNode.h" />
 		<Unit filename="StringField.cpp" />
 		<Unit filename="StringField.h" />
 		<Unit filename="Resolver.cpp" />

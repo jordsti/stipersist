@@ -45,6 +45,8 @@
 		<Unit filename="SimpleObject.h" />
 		<Unit filename="NestedObject.cpp" />
 		<Unit filename="NestedObject.h" />
+		<Unit filename="ListObject.cpp" />
+		<Unit filename="ListObject.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

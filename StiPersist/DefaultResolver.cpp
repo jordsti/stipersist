@@ -11,6 +11,11 @@ namespace StiPersist
 
 	DefaultResolver::~DefaultResolver() {}
 
+	void DefaultResolver::buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, IPersist *parent)
+	{
+		//todo
+	}
+	
 	Data::Field* DefaultResolver::getField(int type, Data::Chunk *nameChunk, Data::Chunk *dataChunk)
 	{
 		Data::Field *field = nullptr;

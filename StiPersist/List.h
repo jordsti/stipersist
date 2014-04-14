@@ -1,6 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include "ListNode.h"
+
 namespace StiPersist
 {
 	namespace Container
@@ -10,6 +12,30 @@ namespace StiPersist
 		public:
 			List();
 			virtual ~List();
+			
+			ListNode* getFirst(void);
+			ListNode* get(int index);
+			
+			void append(ListNode *node);
+			void append(IPersist *element);
+			void append(List *list);
+			
+			void insert(int index, ListNode *node);
+			void insert(int index, IPersist *element);
+			void insert(int index, List *list);
+			
+			void remove(ListNode *node);
+			ListNode* remove(IPersist *element);
+			ListNode* remove(int index);
+			
+			ListNode* pop(void);
+			
+			ListNode* getLast(void);
+			int size(void);
+			
+			bool isEmpty(void);
+		private:
+			ListNode *first;
 		};
 	}
 

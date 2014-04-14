@@ -1,6 +1,7 @@
 #include "IPersist.h"
 #include <iostream>
 #include <fstream>
+#include "Resolver.h"
 #include "DefaultResolver.h"
 
 namespace StiPersist
@@ -21,6 +22,16 @@ namespace StiPersist
 	bool IPersist::isPopulated(void)
 	{
 		return populated;
+	}
+	
+	void IPersist::addChild(std::string childName, IPersist *child)
+	{
+		childs.insert(std::make_pair(childName, child));
+	}
+	
+	IPersist* IPersist::getChild(std::string childName)
+	{
+		return childs[childName];
 	}
 	
 	Data::Buffer* IPersist::getChunkBuffer(void)
@@ -125,11 +136,28 @@ namespace StiPersist
 		delete buffer;
 	}
 	
+	void IPersist::_populateChilds(void)
+	{
+		std::map<std::string, IPersist*>::iterator lit(childs.begin()), lend(childs.end());
+		for(;lit!=lend;++lit)
+		{
+			std::string name = lit->first;
+			IPersist *child = lit->second;
+			
+			Data::ObjectField *ofield = new Data::ObjectField(name);
+			ofield->setObject(child);
+			
+			fields.push_back(ofield);
+			
+		}
+	}
+	
 	void IPersist::_populateFields(void)
 	{
 		if(!populated)
 		{
 			populateFields();
+			_populateChilds();
 		}
 	}
 

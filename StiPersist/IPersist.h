@@ -3,11 +3,12 @@
 
 #include "Field.h"
 #include <list>
-#include "Resolver.h"
+#include <map>
 #include "Buffer.h"
 
 namespace StiPersist
 {
+	class Resolver;
 
 	class IPersist
 	{
@@ -19,15 +20,22 @@ namespace StiPersist
 		
 		Data::Buffer* getChunkBuffer(void);
 		
+		IPersist* getChild(std::string childName);
+		
 	protected:
 		IPersist();
 		bool isPopulated(void);
+		virtual void addChild(std::string childName, IPersist *child);
+		
 		virtual void populateFields(void) = 0;
 		virtual void fromFields(void) = 0;
 		
 		Resolver *resolver;
+		
 		std::list<Data::Field*> fields;
+		std::map<std::string, IPersist*> childs;
 	private:
+		void _populateChilds(void);
 		void _populateFields(void);
 		void _fromFields(void);
 
