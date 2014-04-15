@@ -2,14 +2,15 @@
 #define MAPNODE_H
 
 #include <string>
-#include "IPersist.h"
+#include "INode.h"
 
 namespace StiPersist
 {
 	namespace Container
 	{
 	
-		class MapNode
+		class MapNode :
+			public INode
 		{
 		public:
 			MapNode();

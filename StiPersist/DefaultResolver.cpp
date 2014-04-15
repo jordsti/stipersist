@@ -25,6 +25,8 @@ namespace StiPersist
 			unsigned int current = 0;
 			Data::FieldMarker *marker;
 			int m_size = sizeof(Data::FieldMarker);
+			Data::Chunk *cnameChunk;
+			Data::Chunk *cdataChunk;
 			
 			char *fm_buffer = new char[m_size];
 			
@@ -42,11 +44,38 @@ namespace StiPersist
 				char *f_name = new char[marker->nameLength];
 				char *f_data = new char[marker->dataLength];
 				//reading name
+				for(int i=0; i<marker->nameLength; i++)
+				{
+					f_name[i] = data[current+i];
+				}
 				
+				current += marker->nameLength;
+				
+				cnameChunk = new Data::Chunk(f_name, marker->nameLength);
 				
 				//reading data
 				
+				for(int i=0; i<marker->dataLength; i++)
+				{
+					f_data[i] = data[current+i];
+				}
 				
+				current += marker->dataLength;
+				
+				cdataChunk = new Data::Chunk(f_data, marker->dataLength);
+				
+				if(marker->type == Data::FT_OBJECT)
+				{
+					buildObjectField(cnameChunk, cdataChunk, parent->getChild(cnameChunk->toString()));
+				}
+				else
+				{
+					Data::Field *field = getField(marker->type, cnameChunk, cdataChunk);
+					if(field != nullptr)
+					{
+						parent->addField(field);
+					}
+				}
 				
 				//reading next marker
 				for(int i=0; i<m_size; i++)

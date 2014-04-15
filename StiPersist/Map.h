@@ -7,6 +7,8 @@ namespace StiPersist
 {
 	namespace Container
 	{
+		class MapIterator;
+		
 		class Map
 		{
 		public:
@@ -15,6 +17,7 @@ namespace StiPersist
 			
 			void append(std::string key, IPersist *element);
 			void append(MapNode *node);
+			void append(Map *map);
 			
 			MapNode* get(std::string key);
 			bool contains(std::string key);
@@ -25,6 +28,10 @@ namespace StiPersist
 			MapNode* getLast(void);
 			
 			int size(void);
+			
+			void clear(void);
+			
+			MapIterator* getIterator(void);
 			
 		private:
 			MapNode *first;

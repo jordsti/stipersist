@@ -1,7 +1,7 @@
 #ifndef LISTNODE_H
 #define LISTNODE_H
 
-#include "IPersist.h"
+#include "INode.h"
 
 namespace StiPersist
 {
@@ -9,7 +9,8 @@ namespace StiPersist
 	namespace Container
 	{
 	
-		class ListNode
+		class ListNode :
+			public INode
 		{
 		public:
 			ListNode();

@@ -1,4 +1,5 @@
 #include "List.h"
+#include "ListIterator.h"
 
 namespace StiPersist
 {
@@ -254,5 +255,12 @@ namespace StiPersist
 		{
 			return clearMemory;
 		}
+		
+		ListIterator* List::getIterator(void)
+		{
+			ListIterator *iterator = new ListIterator(this);
+			return iterator;
+		}
+		
 	}
 }

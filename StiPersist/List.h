@@ -7,6 +7,8 @@ namespace StiPersist
 {
 	namespace Container
 	{
+		class ListIterator;
+	
 		class List
 		{
 		public:
@@ -39,6 +41,9 @@ namespace StiPersist
 			
 			void setClearMemory(bool m_clearMemory);
 			bool getClearMemory(void);
+			
+			ListIterator* getIterator(void);
+
 		private:
 			ListNode *first;
 			bool clearMemory;

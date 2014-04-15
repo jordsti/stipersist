@@ -6,21 +6,21 @@ namespace StiPersist
 	namespace Container
 	{
 	
-		ListNode::ListNode()
+		ListNode::ListNode() : INode()
 		{
 			element = nullptr;
 			next = nullptr;
 			clearMemory = true;
 		}
 		
-		ListNode::ListNode(IPersist *m_element)
+		ListNode::ListNode(IPersist *m_element) : INode()
 		{
 			element = m_element;
 			next = nullptr;
 			clearMemory = true;
 		}
 		
-		ListNode::ListNode(IPersist *m_element, ListNode *m_next)
+		ListNode::ListNode(IPersist *m_element, ListNode *m_next) : INode()
 		{
 			element = m_element;
 			next = m_next;

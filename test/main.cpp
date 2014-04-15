@@ -2,7 +2,7 @@
 #include "NestedObject.h"
 #include "ListObject.h"
 #include "List.h"
-
+#include "ListIterator.h"
 
 using namespace StiPersist;
 using namespace Container;
@@ -83,6 +83,23 @@ int main(int argc, char** argv)
 		std::cout << "\t -> " << value << std::endl;
 		current = current->getNext();
 	}
+	
+	//test iterator
+	
+	for(int i=0; i<600; i++)
+	{
+		ListObject *obj = new ListObject();
+		obj->setValue(i);
+		list->insert(5, obj);
+	}
+	
+	ListIterator *iterator = list->getIterator();
+	std::cout << "Iterator test" << std::endl;
+	while(iterator->moveNext())
+	{
+		std::cout << "it : " << (dynamic_cast<ListObject*>(iterator->getElement()))->getValue() << std::endl;
+	}
+	
 	
 	
 	/* List

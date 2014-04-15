@@ -4,21 +4,21 @@ namespace StiPersist
 {
 	namespace Container
 	{
-		MapNode::MapNode()
+		MapNode::MapNode() : INode()
 		{
 			key = "";
 			element = nullptr;
 			next = nullptr;
 		}
 		
-		MapNode::MapNode(std::string m_key, IPersist *m_element)
+		MapNode::MapNode(std::string m_key, IPersist *m_element) : INode()
 		{
 			key = m_key;
 			element = m_element;
 			next = nullptr;
 		}
 		
-		MapNode::MapNode(std::string m_key, IPersist *m_element, MapNode *m_next)
+		MapNode::MapNode(std::string m_key, IPersist *m_element, MapNode *m_next) : INode()
 		{
 			key = m_key;
 			element = m_element;
