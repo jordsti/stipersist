@@ -11,9 +11,9 @@ class SimpleObject :
 public:
 	SimpleObject();
 	virtual ~SimpleObject();
+	void fromFields(void);
 protected:
 	void populateFields(void);
-	void fromFields(void);
 private:
 	int integer;
 	std::string text;

@@ -3,7 +3,7 @@
 #include <fstream>
 #include "Resolver.h"
 #include "DefaultResolver.h"
-
+#include "Logger.h"
 namespace StiPersist
 {
 	//static
@@ -89,6 +89,11 @@ namespace StiPersist
 	
 	void IPersist::load(std::string source)
 	{
+		if(childs.size() == 0)
+		{
+			_populateChilds();
+		}
+	
 		Data::FieldMarker *marker = new Data::FieldMarker();
 		Data::Chunk *nameChunk;
 		Data::Chunk *dataChunk;
@@ -120,7 +125,7 @@ namespace StiPersist
 				if(field != nullptr)
 				{
 					fields.push_back(field);
-					std::cout << field->getName() << std::endl;
+					Logger::Message(field->getName());
 				}
 			}
 			

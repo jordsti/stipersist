@@ -3,7 +3,7 @@
 #include "IntegerField.h"
 #include "FloatField.h"
 #include <iostream>
-
+#include "Logger.h"
 namespace StiPersist
 {
 
@@ -87,6 +87,7 @@ namespace StiPersist
 				current += m_size;
 			}
 			
+			parent->fromFields();
 		}
 	}
 	
@@ -94,21 +95,18 @@ namespace StiPersist
 	{
 		Data::Field *field = nullptr;
 		std::string name = nameChunk->toString();
-		std::cout << name << std::endl;
-		std::cout << "Name Length : " << nameChunk->getLength() << std::endl;
-		std::cout << "Type : " << type << std::endl;
+		Logger::Message(name);
+		Logger::Message("Name Length : " + std::to_string(nameChunk->getLength()));
+		Logger::Message("Type : " + std::to_string(type));
 		if(type == Data::FT_STRING)
 		{	
-			std::cout << "String" << std::endl;
-			std::cout << name << std::endl;
 			Data::StringField *sfield = new Data::StringField(name);
 			sfield->setText(dataChunk->toString());
-			std::cout << "Text : " << sfield->getText() << std::endl;
 			return sfield;
 		}
 		else if(type == Data::FT_INTEGER)
 		{
-			std::cout << "Integer" << std::endl;
+
 			Data::IntegerField *ifield = new Data::IntegerField(name);
 			int ivalue = 0;
 			char *data = dataChunk->getData();
@@ -117,19 +115,19 @@ namespace StiPersist
 			ivalue = istruct->value;
 			ifield->setInteger(ivalue);
 			
-			std::cout << "Integer : " << ivalue << std::endl;
-			
 			return ifield;
 		}
 		else if(type == Data::FT_FLOAT)
 		{
 			Data::FloatField *ffield = new Data::FloatField(name);
-			std::cout << "Float" << std::endl;
 			char *data = dataChunk->getData();
 			Data::FloatStruct *fstruct = reinterpret_cast<Data::FloatStruct*>(data);
 			ffield->setFloat(fstruct->value);
-			std::cout << "FL value : " << ffield->getFloat() <<std::endl;
 			return ffield;
+		}
+		else
+		{
+			Logger::Error("Field type not recognized !");
 		}
 	
 

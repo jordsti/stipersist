@@ -10,9 +10,9 @@ class NestedObject :
 public:
 	NestedObject();
 	virtual ~NestedObject();
+	void fromFields(void);
 protected:
 	void populateFields(void);
-	void fromFields(void);
 	SimpleObject *object1;
 	std::string text2;
 };

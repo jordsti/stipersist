@@ -25,14 +25,13 @@ namespace StiPersist
 		static void SetDefaultResolver(Resolver *m_resolver);
 		
 		virtual void addField(Data::Field *field);
-		
+		virtual void fromFields(void) = 0;
 	protected:
 		IPersist();
 		bool isPopulated(void);
 		virtual void addChild(std::string childName, IPersist *child);
 		
 		virtual void populateFields(void) = 0;
-		virtual void fromFields(void) = 0;
 		
 		Resolver *resolver;
 		

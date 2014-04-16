@@ -116,6 +116,7 @@ int main(int argc, char** argv)
 	/*SimpleObject *obj2 = new SimpleObject();
 	
 	obj2->load("test.obj");*/
-	
+	NestedObject *obj5 = new NestedObject();
+	obj5->load("test.obj");
 	return 0;
 }
