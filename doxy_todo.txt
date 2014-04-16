@@ -6,12 +6,12 @@ DefaultResolver.h -> DONE
 Field.h -> DONE
 FloatField.h -> DONE
 IntegerField.h -> DONE
-IPersist.h
-Logger.h
+IPersist.h -> DONE
+Logger.h -> DONE
 ObjectField.h -> DONE
-Resolver.h
+Resolver.h -> DONE
 StringField.h -> DONE
-Version.h
+Version.h -> DONE
 
 *Not needed
 -------------------------------------
