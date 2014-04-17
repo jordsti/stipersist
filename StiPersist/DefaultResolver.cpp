@@ -1,7 +1,11 @@
 #include "DefaultResolver.h"
 #include "StringField.h"
 #include "IntegerField.h"
+#include "UIntegerField.h"
 #include "FloatField.h"
+#include "DoubleField.h"
+#include "BoolField.h"
+#include "RawField.h"
 #include <iostream>
 #include "Logger.h"
 namespace StiPersist
@@ -11,6 +15,20 @@ namespace StiPersist
 
 	DefaultResolver::~DefaultResolver() {}
 
+	bool DefaultResolver::isHandled(Data::FieldType type)
+	{
+		return (
+			type == Data::FT_RAW ||
+			type == Data::FT_STRING ||
+			type == Data::FT_INTEGER ||
+			type == Data::FT_UINTEGER ||
+			type == Data::FT_DOUBLE ||
+			type == Data::FT_FLOAT ||
+			type == Data::FT_OBJECT ||
+			type == Data::FT_DOUBLE
+		);
+	}
+	
 	void DefaultResolver::buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, IPersist *parent)
 	{
 		//todo
@@ -98,36 +116,69 @@ namespace StiPersist
 		Logger::Message(name);
 		Logger::Message("Name Length : " + std::to_string(nameChunk->getLength()));
 		Logger::Message("Type : " + std::to_string(type));
+		
+		// need to rework here with Field::fromDataChunk
+		
 		if(type == Data::FT_STRING)
 		{	
 			Data::StringField *sfield = new Data::StringField(name);
-			sfield->setText(dataChunk->toString());
-			return sfield;
+			//sfield->setText(dataChunk->toString());
+			//return sfield;
+			field = sfield;
+		}
+		else if(type == Data::FT_RAW)
+		{
+			Data::RawField *rfield = new Data::RawField(name);
+			field = rfield;
 		}
 		else if(type == Data::FT_INTEGER)
 		{
 
 			Data::IntegerField *ifield = new Data::IntegerField(name);
-			int ivalue = 0;
+			/*int ivalue = 0;
 			char *data = dataChunk->getData();
 
 			Data::IntStruct *istruct = reinterpret_cast<Data::IntStruct*>(data);
 			ivalue = istruct->value;
-			ifield->setInteger(ivalue);
+			ifield->setInteger(ivalue);*/
 			
-			return ifield;
+			//return ifield;
+			field = ifield;
+		}
+		else if(type == Data::FT_UINTEGER)
+		{
+			Data::UIntegerField *uifield = new Data::UIntegerField(name);
+			field = uifield;
 		}
 		else if(type == Data::FT_FLOAT)
 		{
 			Data::FloatField *ffield = new Data::FloatField(name);
-			char *data = dataChunk->getData();
+			/*char *data = dataChunk->getData();
 			Data::FloatStruct *fstruct = reinterpret_cast<Data::FloatStruct*>(data);
-			ffield->setFloat(fstruct->value);
-			return ffield;
+			ffield->setFloat(fstruct->value);*/
+			//return ffield;
+			field = ffield;
+		}
+		else if(type == Data::FT_DOUBLE)
+		{
+			Data::DoubleField *dfield = new Data::DoubleField(name);
+			
+			field = dfield;
+		}
+		else if(type == Data::FT_BOOL)
+		{
+			Data::BoolField *bfield = new Data::BoolField(name);
+			
+			field = bfield;
 		}
 		else
 		{
 			Logger::Error("Field type not recognized !");
+		}
+		
+		if(field != nullptr || field != 0)
+		{
+			field->fromDataChunk(dataChunk);
 		}
 	
 

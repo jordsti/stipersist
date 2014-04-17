@@ -19,13 +19,23 @@ namespace StiPersist
 			FT_UNDEFINED = -1024,
 			//numeric fields
 			FT_INTEGER = 1,
-			FT_FLOAT = 2,
+			FT_UINTEGER = 2,
+			FT_FLOAT = 3,
+			FT_DOUBLE = 4,
+			//simple field
+			FT_BOOL = 64,
+			FT_RAW = 128,
 			//string fields
 			FT_STRING = 1024,
 			//complex field
 			FT_OBJECT = 2048,
 			//End of file
 			FT_EOF = 4096
+		};
+		
+		struct FieldInfo {
+			FieldType type;
+			std::string name;
 		};
 	
 		/// \class Field
@@ -43,6 +53,10 @@ namespace StiPersist
 			/// \brief Get Data Chunk [Pure Virtual]
 			/// \return Data Chunk Pointer
 			virtual Chunk* getDataChunk(void) = 0;
+			
+			/// \brief Set Field value from Data Chunk [Pure Virtual]
+			/// \param dataChunk Field Data Chunk
+			virtual void fromDataChunk(Chunk *dataChunk) = 0;
 			
 			/// \brief Get Field Type
 			/// \return Type ID

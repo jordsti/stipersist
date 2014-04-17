@@ -9,7 +9,7 @@ using namespace Container;
 
 int main(int argc, char** argv)
 {
-	std::cout << "StiPerist : Container Test" << std::endl;
+	/*std::cout << "StiPerist : Container Test" << std::endl;
 
 	List *list = new List();
 	
@@ -98,7 +98,7 @@ int main(int argc, char** argv)
 	while(iterator->moveNext())
 	{
 		std::cout << "it : " << (dynamic_cast<ListObject*>(iterator->getElement()))->getValue() << std::endl;
-	}
+	}*/
 	
 	
 	
@@ -109,14 +109,28 @@ int main(int argc, char** argv)
 	*/
 	
 	std::cout << "StiPersist : Serialization Test" <<std::endl;
-	NestedObject *obj = new NestedObject();
+	//NestedObject *obj = new NestedObject();
 	
-	obj->save("test.obj");
+	//obj->save("test.obj");
 	
 	/*SimpleObject *obj2 = new SimpleObject();
 	
 	obj2->load("test.obj");*/
-	NestedObject *obj5 = new NestedObject();
-	obj5->load("test.obj");
+	//NestedObject *obj5 = new NestedObject();
+	//obj5->load("test.obj");
+	
+	SimpleObject *obj = new SimpleObject();
+	
+	obj->setValue(3200, "allo yeah !", 5.14, false);
+	obj->save("test.obj");
+	
+	SimpleObject *obj2 = new SimpleObject();
+	
+	obj2->load("test.obj");
+	
+	std::cout << "Integer : " << obj2->getInteger() << std::endl;
+	std::cout << "Text : " << obj2->getText() << std::endl;
+	std::cout << "Fl : " << obj2->getFl() << std::endl;
+	std::cout << "B1 : " << obj2->getB1() << std::endl;
 	return 0;
 }

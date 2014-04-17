@@ -41,6 +41,21 @@ namespace StiPersist
 		fields.push_back(field);
 	}
 	
+	Data::Field* IPersist::getField(std::string fname)
+	{
+		std::list<Data::Field*>::iterator lit(fields.begin()), lend(fields.end());
+		
+		for(;lit!=lend;++lit)
+		{
+			if((*lit)->getName() == fname)
+			{
+				return (*lit);
+			}
+		}
+		
+		return nullptr;
+	}
+	
 	IPersist* IPersist::getChild(std::string childName)
 	{
 		return childs[childName];

@@ -7,7 +7,7 @@ namespace StiPersist
 {
 	namespace Data
 	{
-		struct IntStruct
+		struct IntegerStruct
 		{
 			int value;
 		};	
@@ -31,6 +31,10 @@ namespace StiPersist
 			/// \brief Get Data Chunk
 			/// \return Data Chunk Pointer
 			Chunk* getDataChunk(void);
+			
+			/// \brief Set the Field Value from a Data Chunk
+			/// \param data Chunk Field Data Chunk
+			void fromDataChunk(Chunk *dataChunk);
 			
 			/// \brief Set Integer Value
 			/// \param m_integer Integer value

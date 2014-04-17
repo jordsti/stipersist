@@ -1,5 +1,6 @@
 #include "NestedObject.h"
 #include "ObjectField.h"
+#include "StringField.h"
 using namespace StiPersist;
 using namespace Data;
 

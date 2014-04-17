@@ -1,5 +1,6 @@
 #include "ObjectField.h"
 #include "Buffer.h"
+#include "Logger.h"
 namespace StiPersist
 {
 
@@ -12,6 +13,11 @@ namespace StiPersist
 		}
 		
 		ObjectField::~ObjectField() {}
+		
+		void ObjectField::fromDataChunk(Chunk *dataChunk)
+		{
+			Logger::Warning("ObjectField::fromDataChunk is not supposed to be called !");
+		}
 		
 		Chunk* ObjectField::getDataChunk(void)
 		{

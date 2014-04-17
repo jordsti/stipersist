@@ -1,5 +1,5 @@
 #include "StringField.h"
-#include <iostream>
+
 namespace StiPersist
 {
 	namespace Data
@@ -25,6 +25,11 @@ namespace StiPersist
 		Chunk* StringField::getDataChunk(void)
 		{
 			return Chunk::FromString(text);
+		}
+		
+		void StringField::fromDataChunk(Chunk *dataChunk)
+		{
+			text = dataChunk->toString();
 		}
 	}
 }

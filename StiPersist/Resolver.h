@@ -14,6 +14,8 @@ namespace StiPersist
 		/// \brief Destructor
 		virtual ~Resolver();
 		
+		virtual bool isHandled(Data::FieldType type) = 0;
+		
 		/// \brief Create a field
 		/// \param type Field Type ID
 		/// \param nameChunk Field Name Chunk

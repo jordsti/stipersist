@@ -38,14 +38,20 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 		</Compiler>
+		<Unit filename="BoolField.cpp" />
+		<Unit filename="BoolField.h" />
 		<Unit filename="Buffer.cpp" />
 		<Unit filename="Buffer.h" />
 		<Unit filename="Chunk.cpp" />
 		<Unit filename="Chunk.h" />
 		<Unit filename="DefaultResolver.cpp" />
 		<Unit filename="DefaultResolver.h" />
+		<Unit filename="DoubleField.cpp" />
+		<Unit filename="DoubleField.h" />
 		<Unit filename="Field.cpp" />
 		<Unit filename="Field.h" />
+		<Unit filename="FieldsObject.cpp" />
+		<Unit filename="FieldsObject.h" />
 		<Unit filename="FloatField.cpp" />
 		<Unit filename="FloatField.h" />
 		<Unit filename="IPersist.cpp" />
@@ -72,8 +78,12 @@
 		<Unit filename="Logger.h" />
 		<Unit filename="StringField.cpp" />
 		<Unit filename="StringField.h" />
+		<Unit filename="RawField.cpp" />
+		<Unit filename="RawField.h" />
 		<Unit filename="Resolver.cpp" />
 		<Unit filename="Resolver.h" />
+		<Unit filename="UIntegerField.cpp" />
+		<Unit filename="UIntegerField.h" />
 		<Unit filename="Version.cpp" />
 		<Unit filename="Version.h" />
 		<Extensions>

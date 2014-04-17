@@ -26,6 +26,8 @@ namespace StiPersist
 			/// \return Data Chunk Pointer
 			Chunk* getDataChunk(void);
 			
+			void fromDataChunk(Chunk *dataChunk);
+			
 			/// \brief Set Object Pointer
 			/// \param m_object IPersist Pointer
 			void setObject(IPersist *m_object);

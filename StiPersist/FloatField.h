@@ -29,6 +29,10 @@ namespace StiPersist
 			/// \brief Get Data Chunk
 			/// \return Data Chunk Pointer
 			Chunk* getDataChunk();
+			
+			/// \brief Set the Field Value from a Data Chunk
+			/// \param data Chunk Field Data Chunk
+			void fromDataChunk(Chunk *dataChunk);
 		
 			/// \brief Set Float Value
 			/// \param m_value Float value

@@ -1,5 +1,10 @@
 #include "SimpleObject.h"
 
+#include "StringField.h"
+#include "IntegerField.h"
+#include "FloatField.h"
+#include "BoolField.h"
+
 using namespace StiPersist;
 using namespace Data;
 
@@ -8,9 +13,38 @@ SimpleObject::SimpleObject() : IPersist()
 	integer = 2000;
 	text = "bla bla bla testing one two";
 	fl = 34.34;
+	b1 = false;
 }
 
 SimpleObject::~SimpleObject() {}
+
+int SimpleObject::getInteger(void)
+{
+	return integer;
+}
+
+std::string SimpleObject::getText(void)
+{
+	return text;
+}
+
+float SimpleObject::getFl(void)
+{
+	return fl;
+}
+
+bool SimpleObject::getB1(void)
+{
+	return b1;
+}
+
+void SimpleObject::setValue(int m_integer, std::string m_text, float m_fl, bool m_b1)
+{
+	integer = m_integer;
+	text = m_text;
+	fl = m_fl;
+	b1 = m_b1;
+}
 
 void SimpleObject::populateFields(void)
 {
@@ -23,9 +57,26 @@ void SimpleObject::populateFields(void)
 	FloatField *ffield = new FloatField("fl");
 	ffield->setFloat(fl);
 	
+	BoolField *bfield = new BoolField("b1");
+	bfield->setBool(b1);
+	
 	fields.push_back(ifield);
 	fields.push_back(sfield);
 	fields.push_back(ffield);
+	fields.push_back(bfield);
 }
 
-void SimpleObject::fromFields(void) {}
+void SimpleObject::fromFields(void) 
+{
+	IntegerField *ifield = dynamic_cast<IntegerField*>(getField("integer"));
+	integer = ifield->getInteger();
+	
+	StringField *sfield = dynamic_cast<StringField*>(getField("text"));
+	text = sfield->getText();
+	
+	FloatField *ffield = dynamic_cast<FloatField*>(getField("fl"));
+	fl = ffield->getFloat();
+	
+	BoolField *bfield = dynamic_cast<BoolField*>(getField("b1"));
+	b1 = bfield->getBool();
+}

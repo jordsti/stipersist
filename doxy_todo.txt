@@ -1,25 +1,25 @@
 Doxy Blocks TO DO
 -------------------------------------
-Buffer.h -> DONE
-Chunk.h -> DONE
-DefaultResolver.h -> DONE
-Field.h -> DONE
-FloatField.h -> DONE
-IntegerField.h -> DONE
-IPersist.h -> DONE
-Logger.h -> DONE
-ObjectField.h -> DONE
-Resolver.h -> DONE
-StringField.h -> DONE
-Version.h -> DONE
-
-*Not needed
--------------------------------------
+BoolField.h
+Buffer.h
+Chunk.h
+DefaultResolver.h
+DoubleField.h
+Field.h
+FloatField.h
 INode.h
+IntegerField.h
+IPersist.h
 Iterator.h
 List.h
 ListIterator.h
 ListNode.h
+Logger.h
 Map.h
 MapIterator.h
 MapNode.h
+ObjectField.h
+Resolver.h
+StringField.h
+UIntegerField.h
+Version.h

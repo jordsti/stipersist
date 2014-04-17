@@ -45,9 +45,12 @@ namespace StiPersist
 		
 		/// \brief Method to implement on your object. Apply field to your attributes
 		virtual void fromFields(void) = 0;
+	
+		Data::Field* getField(std::string fname);
 	protected:
 		/// \brief Constructor
 		IPersist();
+		
 		
 		/// \brief Is the field are populated
 		/// \return populated

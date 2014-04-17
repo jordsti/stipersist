@@ -16,9 +16,9 @@ namespace StiPersist
 		
 		Chunk* IntegerField::getDataChunk(void)
 		{
-			char* data = new char[sizeof(IntStruct)];
+			char* data = new char[sizeof(IntegerStruct)];
 			
-			IntStruct *istruct = new IntStruct();
+			IntegerStruct *istruct = new IntegerStruct();
 			
 			istruct->value = integer;
 			
@@ -26,6 +26,15 @@ namespace StiPersist
 			
 			Chunk *chunk = new Chunk(data, INTEGER_LENGTH);
 			return chunk;
+		}
+		
+		void IntegerField::fromDataChunk(Chunk *dataChunk)
+		{
+			char *data = dataChunk->getData();
+			
+			IntegerStruct *istruct = reinterpret_cast<IntegerStruct*>(data);
+			
+			integer = istruct->value;
 		}
 		
 		void IntegerField::setInteger(int m_integer)

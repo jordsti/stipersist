@@ -28,6 +28,12 @@ namespace StiPersist
 			return chunk;
 		}
 
+		void FloatField::fromDataChunk(Chunk *dataChunk)
+		{
+			FloatStruct *fstruct = reinterpret_cast<FloatStruct*>(dataChunk->getData());
+			value = fstruct->value;
+		}
+		
 		void FloatField::setFloat(float m_value)
 		{
 			value = m_value;
