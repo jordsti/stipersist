@@ -20,6 +20,12 @@ namespace StiPersist
 			void setElement(IPersist *m_element);
 			IPersist* getElement(void);
 			
+			template <typename T>
+			T* getElement(void)
+			{
+				return dynamic_cast<T*>(element);
+			}
+			
 			void setNext(ListNode *m_next);
 			ListNode* getNext(void);
 		

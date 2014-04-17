@@ -6,9 +6,11 @@
 #include "ListIterator.h"
 #include "ListTest.h"
 #include "MapTest.h"
+#include "StringField.h"
 
 using namespace StiPersist;
 using namespace Container;
+
 
 int main(int argc, char** argv)
 {
@@ -155,15 +157,10 @@ int main(int argc, char** argv)
 	
 	
 	ListTest *test = new ListTest();
-	
-	test->add(0, 0);
-	test->add(1, 1);
-	test->add(2, 0);
-	test->add(3, 3);
-	test->add(4, 4);
-	test->add(5, 0);
-	test->add(0, 6);
-	test->add(7, 0);
+	for(int i=0; i<1024; i++)
+	{
+		test->add(i, i*2);
+	}
 	
 	test->save("list.obj");
 	
@@ -188,6 +185,8 @@ int main(int argc, char** argv)
 	mtest2->load("map.obj");
 	mtest2->print();
 	
+	
+	std::cout << "TEST TEMPLATE " << obj->getField<Data::StringField>("text")->getText();
 	
 	return 0;
 }

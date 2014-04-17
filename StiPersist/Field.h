@@ -90,6 +90,14 @@ namespace StiPersist
 			/// \brief Type ID
 			int type;
 		};
+		
+		template <typename T>
+		T* CreateField(std::string fname)
+		{
+			T* tfield = new T(fname);
+			
+			return tfield;
+		}
 	}
 }
 

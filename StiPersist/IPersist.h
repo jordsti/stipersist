@@ -47,6 +47,14 @@ namespace StiPersist
 		virtual void fromFields(void) = 0;
 	
 		Data::Field* getField(std::string fname);
+		
+		template <typename T>
+		T* getField(std::string fname)
+		{
+			return dynamic_cast<T*>(getField(fname));
+		}
+
+		
 	protected:
 		/// \brief Constructor
 		IPersist();

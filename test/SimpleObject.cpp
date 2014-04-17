@@ -48,7 +48,10 @@ void SimpleObject::setValue(int m_integer, std::string m_text, float m_fl, bool 
 
 void SimpleObject::populateFields(void)
 {
-	IntegerField *ifield = new IntegerField("integer");
+	/*IntegerField *ifield = new IntegerField("integer");
+	ifield->setInteger(integer);*/
+	
+	IntegerField *ifield = CreateField<IntegerField>("integer");
 	ifield->setInteger(integer);
 	
 	StringField *sfield = new StringField("text");
@@ -68,15 +71,15 @@ void SimpleObject::populateFields(void)
 
 void SimpleObject::fromFields(void) 
 {
-	IntegerField *ifield = dynamic_cast<IntegerField*>(getField("integer"));
+	IntegerField *ifield = getField<IntegerField>("integer");
 	integer = ifield->getInteger();
 	
-	StringField *sfield = dynamic_cast<StringField*>(getField("text"));
+	StringField *sfield = getField<StringField>("text");
 	text = sfield->getText();
 	
-	FloatField *ffield = dynamic_cast<FloatField*>(getField("fl"));
+	FloatField *ffield = getField<FloatField>("fl");
 	fl = ffield->getFloat();
 	
-	BoolField *bfield = dynamic_cast<BoolField*>(getField("b1"));
+	BoolField *bfield = getField<BoolField>("b1");
 	b1 = bfield->getBool();
 }

@@ -25,6 +25,12 @@ namespace StiPersist
 			void setElement(IPersist *m_element);
 			IPersist *getElement(void);
 			
+			template <typename T>
+			T* getElement(void)
+			{
+				return dynamic_cast<T*>(element);
+			}
+			
 			void setKey(std::string m_key);
 			std::string getKey(void);
 			

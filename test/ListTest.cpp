@@ -29,7 +29,7 @@ void ListTest::print(void)
 	
 	while(it->moveNext())
 	{
-		FieldsObject *pt = dynamic_cast<FieldsObject*>(it->getElement());
+		FieldsObject *pt = it->getElement<FieldsObject>();
 	
 		std::cout << "x : " << pt->getInt("x") << std::endl;
 		std::cout << "y : " << pt->getInt("y") << std::endl;
@@ -39,7 +39,7 @@ void ListTest::print(void)
 
 void ListTest::fromFields(void)
 {
-	list = (dynamic_cast<ListField*>(getField("list")))->getList();
+	list = getField<ListField>("list")->getList();
 }
 
 void ListTest::populateFields(void)

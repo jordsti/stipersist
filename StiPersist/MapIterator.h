@@ -21,6 +21,13 @@ namespace StiPersist
 			std::string getKey(void);
 			
 			IPersist* getElement(void);
+			
+			template <typename T>
+			T* getElement(void)
+			{
+				return dynamic_cast<T*>(current->getElement());
+			}
+			
 			IteratorType getType(void);
 		private:
 			Map *map;
