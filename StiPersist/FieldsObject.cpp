@@ -6,6 +6,7 @@
 #include "UIntegerField.h"
 #include "BoolField.h"
 #include "RawField.h"
+#include "Resolver.h"
 
 namespace StiPersist
 {
@@ -15,6 +16,60 @@ namespace StiPersist
 	void FieldsObject::fromFields(void) {}
 	void FieldsObject::populateFields(void) {}
 	
+	void FieldsObject::fromChunk(Data::Chunk *chunk)
+	{
+		char *data = chunk->getData();
+		unsigned int length = chunk->getLength();
+		unsigned int m_length = sizeof(Data::FieldMarker);
+		Data::FieldMarker *marker = new Data::FieldMarker();
+		unsigned int current = 0;
+		
+		while(current < length)
+		{
+			char *m_data = new char[m_length];
+			
+			for(int i=0; i<m_length; i++)
+			{
+				m_data[i] = data[current+i];
+			}
+			
+			current += m_length;
+			
+			marker = reinterpret_cast<Data::FieldMarker*>(m_data);
+			
+			char *f_name = new char[marker->nameLength];
+			
+			for(int i=0; i<marker->nameLength; i++)
+			{
+				f_name[i] = data[current+i];
+			}
+			
+			current += marker->nameLength;
+			
+			Data::Chunk *nameChunk = new Data::Chunk(f_name, marker->nameLength);
+			
+			char *f_data = new char[marker->dataLength];
+			
+			for(int i=0; i<marker->dataLength; i++)
+			{
+				f_data[i] = data[current+i];
+			}
+			
+			current += marker->dataLength;
+			
+			Data::Chunk *dataChunk = new Data::Chunk(f_data, marker->dataLength);
+			
+			if(marker->type == Data::FT_EOF)
+			{
+				break;
+			}
+			
+			Data::Field *field = resolver->getField(marker->type, nameChunk, dataChunk);
+			
+			fields.push_back(field);
+		}
+		
+	}
 	
 	void FieldsObject::setString(std::string fname, std::string value)
 	{

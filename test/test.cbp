@@ -43,10 +43,18 @@
 		</Linker>
 		<Unit filename="SimpleObject.cpp" />
 		<Unit filename="SimpleObject.h" />
+		<Unit filename="SimpleObject2.cpp" />
+		<Unit filename="SimpleObject2.h" />
 		<Unit filename="NestedObject.cpp" />
 		<Unit filename="NestedObject.h" />
 		<Unit filename="ListObject.cpp" />
 		<Unit filename="ListObject.h" />
+		<Unit filename="ListTest.cpp" />
+		<Unit filename="ListTest.h" />
+		<Unit filename="MapTest.cpp" />
+		<Unit filename="MapTest.h" />
+		<Unit filename="Point.cpp" />
+		<Unit filename="Point.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -6,7 +6,8 @@
 #include "DoubleField.h"
 #include "BoolField.h"
 #include "RawField.h"
-#include <iostream>
+#include "ListField.h"
+#include "MapField.h"
 #include "Logger.h"
 namespace StiPersist
 {
@@ -25,7 +26,9 @@ namespace StiPersist
 			type == Data::FT_DOUBLE ||
 			type == Data::FT_FLOAT ||
 			type == Data::FT_OBJECT ||
-			type == Data::FT_DOUBLE
+			type == Data::FT_DOUBLE ||
+			type == Data::FT_LIST ||
+			type == Data::FT_MAP
 		);
 	}
 	
@@ -170,6 +173,18 @@ namespace StiPersist
 			Data::BoolField *bfield = new Data::BoolField(name);
 			
 			field = bfield;
+		}
+		else if(type == Data::FT_LIST)
+		{
+			Data::ListField *lfield = new Data::ListField(name);
+			
+			field = lfield;
+		}
+		else if(type == Data::FT_MAP)
+		{
+			Data::MapField *mfield = new Data::MapField(name);
+			
+			field = mfield;
 		}
 		else
 		{

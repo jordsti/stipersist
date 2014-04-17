@@ -1,8 +1,11 @@
 #include <iostream>
 #include "NestedObject.h"
+#include "SimpleObject2.h"
 #include "ListObject.h"
 #include "List.h"
 #include "ListIterator.h"
+#include "ListTest.h"
+#include "MapTest.h"
 
 using namespace StiPersist;
 using namespace Container;
@@ -132,5 +135,59 @@ int main(int argc, char** argv)
 	std::cout << "Text : " << obj2->getText() << std::endl;
 	std::cout << "Fl : " << obj2->getFl() << std::endl;
 	std::cout << "B1 : " << obj2->getB1() << std::endl;
+	
+	
+	SimpleObject2 *obj3 = new SimpleObject2();
+	
+	obj3->setString("text1", "alloha alloha allohahahah");
+	obj3->setInt("int1", 202033);
+	obj3->setDouble("double1", 7.8330);
+	
+	obj3->save("test2.obj");
+	
+	SimpleObject2 *obj4 = new SimpleObject2();
+	
+	obj4->load("test2.obj");
+	
+	std::cout << "String : " << obj3->getString("text1") << std::endl;
+	std::cout << "Int : " << obj3->getInt("int1") << std::endl;
+	std::cout << "Double : " << obj3->getDouble("double1") << std::endl;
+	
+	
+	ListTest *test = new ListTest();
+	
+	test->add(0, 0);
+	test->add(1, 1);
+	test->add(2, 0);
+	test->add(3, 3);
+	test->add(4, 4);
+	test->add(5, 0);
+	test->add(0, 6);
+	test->add(7, 0);
+	
+	test->save("list.obj");
+	
+	ListTest *test2 = new ListTest();
+	test2->load("list.obj");
+	test2->print();
+	
+	MapTest *mtest = new MapTest();
+	
+	mtest->add("point1", 0, 0);
+	mtest->add("point2", 1, 1);
+	mtest->add("point3", 2, 0);
+	mtest->add("point4", 3, 3);
+	mtest->add("point5", 4, 0);
+	mtest->add("point6", 0, 5);
+	mtest->add("point7", 6, 0);
+	
+	mtest->save("map.obj");
+	
+	MapTest *mtest2 = new MapTest();
+	
+	mtest2->load("map.obj");
+	mtest2->print();
+	
+	
 	return 0;
 }

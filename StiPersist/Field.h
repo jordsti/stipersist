@@ -29,6 +29,8 @@ namespace StiPersist
 			FT_STRING = 1024,
 			//complex field
 			FT_OBJECT = 2048,
+			FT_LIST = 2049,
+			FT_MAP = 2050,
 			//End of file
 			FT_EOF = 4096
 		};

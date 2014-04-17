@@ -14,6 +14,8 @@ namespace StiPersist
 		
 		void fromFields(void);
 		
+		void fromChunk(Data::Chunk *chunk);
+		
 		void setString(std::string fname, std::string value);
 		void setInt(std::string fname, int value);
 		void setDouble(std::string fname, double value);

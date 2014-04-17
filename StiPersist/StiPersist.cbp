@@ -61,6 +61,8 @@
 		<Unit filename="Iterator.h" />
 		<Unit filename="Map.cpp" />
 		<Unit filename="Map.h" />
+		<Unit filename="MapField.cpp" />
+		<Unit filename="MapField.h" />
 		<Unit filename="MapNode.cpp" />
 		<Unit filename="MapNode.h" />
 		<Unit filename="MapIterator.cpp" />
@@ -70,6 +72,8 @@
 		<Unit filename="INode.h" />
 		<Unit filename="List.cpp" />
 		<Unit filename="List.h" />
+		<Unit filename="ListField.cpp" />
+		<Unit filename="ListField.h" />
 		<Unit filename="ListNode.cpp" />
 		<Unit filename="ListNode.h" />
 		<Unit filename="ListIterator.cpp" />
