@@ -16,6 +16,11 @@ namespace StiPersist
 			length = m_length;
 		}
 		
+		Array::~Array()
+		{
+		
+		}
+		
 		void Array::insert(int i, IPersist *element)
 		{
 			if(elements.size() < length)

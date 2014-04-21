@@ -10,15 +10,33 @@ namespace StiPersist
 	{
 		class ArrayIterator;
 	
+		/// \class Array
+		/// \brief Container with fixed length, must be all populated
 		class Array
 		{
 		public:
+			/// \brief Empty Array
 			Array();
+			
+			/// \brief Array with specified capacity
+			/// \param m_length Capacity
 			Array(unsigned int m_length);
 			
+			/// \brief Destructor
+			virtual ~Array();
+			
+			/// \brief Insert an element at index
+			/// \param i Index
+			/// \param element Element
 			void insert(int i, IPersist *element);
+			
+			/// \brief Append an element to the end of the array
+			/// \param element Element
 			void append(IPersist *element);
 			
+			/// \brief Get Element at index
+			/// \param i Index
+			/// \return Element
 			IPersist* get(int i);
 			
 			template <typename T>
@@ -27,14 +45,23 @@ namespace StiPersist
 				return dynamic_cast<T*>(get(i));
 			}
 			
+			/// \brief Get Array Length
+			/// \return Length
 			unsigned int getLength(void);
 			
+			/// \brief Create a new Array Iterator
+			/// \return Iterator
 			ArrayIterator* getIterator(void);
 			
+			/// \brief If the array is empty
+			/// \param Empty
 			bool isEmpty(void);
 			
 		protected:
+			/// \brief Capacity
 			unsigned int length;
+			
+			/// \brief Wrapped Vector
 			std::vector<IPersist*> elements;
 		};
 	}

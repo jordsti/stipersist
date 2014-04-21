@@ -43,6 +43,8 @@
 		</Linker>
 		<Unit filename="Array2DTest.cpp" />
 		<Unit filename="Array2DTest.h" />
+		<Unit filename="ArrayTest.cpp" />
+		<Unit filename="ArrayTest.h" />
 		<Unit filename="SimpleObject.cpp" />
 		<Unit filename="SimpleObject.h" />
 		<Unit filename="SimpleObject2.cpp" />

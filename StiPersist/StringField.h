@@ -9,7 +9,7 @@ namespace StiPersist
 	namespace Data
 	{
 		/// \class StringField
-		/// \biref String Field
+		/// \brief String Field
 		class StringField :
 			public Field
 		{
@@ -34,7 +34,7 @@ namespace StiPersist
 			Chunk* getDataChunk(void);
 			
 			/// \brief Set the Field Value from a Data Chunk
-			/// \param data Chunk Field Data Chunk
+			/// \param dataChunk Field Data Chunk
 			void fromDataChunk(Chunk *dataChunk);
 		protected:
 			

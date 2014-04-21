@@ -7,6 +7,7 @@
 #include "ListTest.h"
 #include "MapTest.h"
 #include "StringField.h"
+#include "ArrayTest.h"
 #include "Array2DTest.h"
 #include "Point.h"
 
@@ -201,13 +202,31 @@ int main(int argc, char** argv)
 		}
 	}
 	
-	atest->save("array.obj");
+	atest->save("array2.obj");
 	
 	Array2DTest *atest2 = new Array2DTest();
 	
-	atest2->load("array.obj");
+	atest2->load("array2.obj");
 	
 	atest2->print();
+	
+	std::cout << "Array Test" << std::endl;
+	
+	ArrayTest *artest = new ArrayTest(10);
+	
+	for(int i=0; i<10; i++)
+	{
+		Point *pt = new Point(i,i);
+		artest->add(pt);
+	}
+	
+	artest->save("array.obj");
+	
+	ArrayTest *ar2test = new ArrayTest();
+	
+	ar2test->load("array.obj");
+	
+	ar2test->print();
 	
 	return 0;
 }
