@@ -8,6 +8,8 @@
 #include "RawField.h"
 #include "ListField.h"
 #include "MapField.h"
+#include "ArrayField.h"
+#include "Array2DField.h"
 #include "Logger.h"
 namespace StiPersist
 {
@@ -28,7 +30,9 @@ namespace StiPersist
 			type == Data::FT_OBJECT ||
 			type == Data::FT_DOUBLE ||
 			type == Data::FT_LIST ||
-			type == Data::FT_MAP
+			type == Data::FT_MAP ||
+			type == Data::FT_ARRAY ||
+			type == Data::FT_ARRAY2D 
 		);
 	}
 	
@@ -185,6 +189,18 @@ namespace StiPersist
 			Data::MapField *mfield = new Data::MapField(name);
 			
 			field = mfield;
+		}
+		else if(type == Data::FT_ARRAY)
+		{
+			Data::ArrayField *afield = new Data::ArrayField(name);
+			
+			field = afield;
+		}
+		else if(type == Data::FT_ARRAY2D)
+		{
+			Data::Array2DField *afield = new Data::Array2DField(name);
+			
+			field = afield;
 		}
 		else
 		{

@@ -10,7 +10,9 @@ namespace StiPersist
 		enum IteratorType {
 			IT_NONE,
 			IT_LIST,
-			IT_MAP
+			IT_MAP,
+			IT_ARRAY2D,
+			IT_ARRAY
 		};
 	
 		class Iterator

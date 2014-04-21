@@ -31,6 +31,8 @@ namespace StiPersist
 			FT_OBJECT = 2048,
 			FT_LIST = 2049,
 			FT_MAP = 2050,
+			FT_ARRAY = 2051,
+			FT_ARRAY2D = 2052,
 			//End of file
 			FT_EOF = 4096
 		};

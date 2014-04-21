@@ -38,6 +38,18 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 		</Compiler>
+		<Unit filename="Array.cpp" />
+		<Unit filename="Array.h" />
+		<Unit filename="ArrayField.cpp" />
+		<Unit filename="ArrayField.h" />
+		<Unit filename="ArrayIterator.cpp" />
+		<Unit filename="ArrayIterator.h" />
+		<Unit filename="Array2D.cpp" />
+		<Unit filename="Array2D.h" />
+		<Unit filename="Array2DField.cpp" />
+		<Unit filename="Array2DField.h" />
+		<Unit filename="Array2DIterator.cpp" />
+		<Unit filename="Array2DIterator.h" />
 		<Unit filename="BoolField.cpp" />
 		<Unit filename="BoolField.h" />
 		<Unit filename="Buffer.cpp" />

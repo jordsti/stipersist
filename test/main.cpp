@@ -7,6 +7,8 @@
 #include "ListTest.h"
 #include "MapTest.h"
 #include "StringField.h"
+#include "Array2DTest.h"
+#include "Point.h"
 
 using namespace StiPersist;
 using namespace Container;
@@ -157,7 +159,7 @@ int main(int argc, char** argv)
 	
 	
 	ListTest *test = new ListTest();
-	for(int i=0; i<1024; i++)
+	for(int i=0; i<20; i++)
 	{
 		test->add(i, i*2);
 	}
@@ -185,8 +187,27 @@ int main(int argc, char** argv)
 	mtest2->load("map.obj");
 	mtest2->print();
 	
+	std::cout << "Array 2D Test" << std::endl;
 	
-	std::cout << "TEST TEMPLATE " << obj->getField<Data::StringField>("text")->getText();
+	Array2DTest *atest = new Array2DTest(5, 5);
+	
+	for(int i=0; i<5; i++)
+	{
+		for(int j=0; j<5; j++)
+		{
+			Point *pt = new Point(i, j);
+			std::cout << "Adding..." << i <<std::endl;
+			atest->add(i, pt);
+		}
+	}
+	
+	atest->save("array.obj");
+	
+	Array2DTest *atest2 = new Array2DTest();
+	
+	atest2->load("array.obj");
+	
+	atest2->print();
 	
 	return 0;
 }
