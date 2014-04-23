@@ -39,6 +39,8 @@ namespace StiPersist
 			/// \return Element
 			Persistable* get(int i);
 			
+			Persistable* operator[](unsigned int index);
+			
 			template <typename T>
 			T* get(int i)
 			{

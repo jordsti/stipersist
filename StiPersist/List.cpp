@@ -22,6 +22,11 @@ namespace StiPersist
 			//must add an attribute clearMemory to delete all node
 		}
 
+		ListNode* List::operator[](unsigned int index)
+		{
+			return get(index);
+		}
+		
 		ListNode* List::getFirst(void)
 		{
 			return first;

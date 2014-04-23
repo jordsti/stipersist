@@ -28,6 +28,8 @@ namespace StiPersist
 			void insert(int index, Persistable *element);
 			void insert(int index, List *list);
 
+			ListNode* operator[](unsigned int index);
+			
 			void remove(ListNode *node);
 			ListNode* remove(Persistable *element);
 			ListNode* remove(int index);

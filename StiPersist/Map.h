@@ -24,6 +24,8 @@ namespace StiPersist
 
 			MapNode* remove(std::string key);
 
+			MapNode* operator[](std::string key);
+			
 			MapNode* getFirst(void);
 			MapNode* getLast(void);
 

@@ -12,6 +12,11 @@ namespace StiPersist
 
 		Map::~Map() {}
 
+		MapNode* Map::operator[](std::string key)
+		{
+			return get(key);
+		}
+		
 		void Map::append(std::string key, Persistable *element)
 		{
 			MapNode *node = new MapNode(key, element);

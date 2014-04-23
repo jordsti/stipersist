@@ -21,6 +21,11 @@ namespace StiPersist
 		
 		}
 		
+		Persistable* Array::operator[](unsigned int index)
+		{
+			return get(index);
+		}
+		
 		void Array::insert(int i, Persistable *element)
 		{
 			if(elements.size() < length)
