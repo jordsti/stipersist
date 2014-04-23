@@ -1,10 +1,10 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 class Point :
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	Point();

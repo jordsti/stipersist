@@ -1,7 +1,7 @@
 #ifndef ARRAY2D_H
 #define ARRAY2D_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 #include <vector>
 
 namespace StiPersist
@@ -27,7 +27,7 @@ namespace StiPersist
 			/// \param i First Index
 			/// \param j Second Index
 			/// \return Element
-			IPersist* get(int i, int j);
+			Persistable* get(int i, int j);
 			
 			template <typename T>
 			T* get(int i, int j)
@@ -39,12 +39,12 @@ namespace StiPersist
 			/// \param i First Index
 			/// \param j Second Index
 			/// \param element Element
-			void insert(int i, int j, IPersist *element);
+			void insert(int i, int j, Persistable *element);
 			
 			/// \brief Put an element ot the end of the array
 			/// \param First Index
 			/// \param element Element
-			void append(int i, IPersist *element);
+			void append(int i, Persistable *element);
 			
 			/// \brief Destructor
 			virtual ~Array2D();
@@ -80,7 +80,7 @@ namespace StiPersist
 			unsigned int j_length;
 			
 			/// \brief Wrapped Vector
-			std::vector< std::vector<IPersist*> > elements;
+			std::vector< std::vector<Persistable*> > elements;
 			
 			/// \brief Clear Data
 			bool clearData;

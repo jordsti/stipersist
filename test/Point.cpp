@@ -4,13 +4,13 @@
 using namespace StiPersist;
 using namespace Data;
 
-Point::Point() : IPersist()
+Point::Point() : Persistable()
 {
 	x = 0;
 	y = 0;
 }
 
-Point::Point(int m_x, int m_y) : IPersist()
+Point::Point(int m_x, int m_y) : Persistable()
 {
 	x = m_x;
 	y = m_y;

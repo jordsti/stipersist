@@ -5,7 +5,7 @@ using namespace StiPersist;
 using namespace Data;
 
 NestedObject::NestedObject() :
-	IPersist()
+	Persistable()
 {
 	object1 = new SimpleObject();
 	text2 = "ets ets ets ets ets";

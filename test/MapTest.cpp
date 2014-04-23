@@ -9,7 +9,7 @@ using namespace StiPersist;
 using namespace Data;
 using namespace Container;
 
-MapTest::MapTest() : IPersist()
+MapTest::MapTest() : Persistable()
 {
 	map = new Map();
 }

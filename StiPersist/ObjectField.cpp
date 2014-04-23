@@ -28,12 +28,12 @@ namespace StiPersist
 			return chunk;
 		}
 		
-		void ObjectField::setObject(IPersist *m_object)
+		void ObjectField::setObject(Persistable *m_object)
 		{
 			object = m_object;
 		}
 		
-		IPersist* ObjectField::getObject(void)
+		Persistable* ObjectField::getObject(void)
 		{
 			return object;
 		}

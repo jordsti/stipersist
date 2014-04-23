@@ -21,11 +21,11 @@ namespace StiPersist
 		
 		}
 		
-		void Array::insert(int i, IPersist *element)
+		void Array::insert(int i, Persistable *element)
 		{
 			if(elements.size() < length)
 			{
-				std::vector<IPersist*>::iterator it (elements.begin());
+				std::vector<Persistable*>::iterator it (elements.begin());
 				
 				elements.insert(it, i, element);
 			}
@@ -35,7 +35,7 @@ namespace StiPersist
 			}
 		}
 		
-		void Array::append(IPersist *element)
+		void Array::append(Persistable *element)
 		{
 			if(elements.size() < length)
 			{
@@ -47,7 +47,7 @@ namespace StiPersist
 			}
 		}
 		
-		IPersist* Array::get(int i)
+		Persistable* Array::get(int i)
 		{
 			if(i < length)
 			{

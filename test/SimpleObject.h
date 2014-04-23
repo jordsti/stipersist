@@ -1,10 +1,10 @@
 #ifndef SIMPLEOBJECT_H
 #define SIMPLEOBJECT_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 class SimpleObject : 
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	SimpleObject();

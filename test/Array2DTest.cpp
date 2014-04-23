@@ -9,19 +9,19 @@ using namespace StiPersist;
 using namespace Data;
 using namespace Container;
 
-Array2DTest::Array2DTest() : IPersist()
+Array2DTest::Array2DTest() : Persistable()
 {
 	array = new Array2D();
 }
 
-Array2DTest::Array2DTest(int i, int j) : IPersist()
+Array2DTest::Array2DTest(int i, int j) : Persistable()
 {
 	array = new Array2D(i, j);
 }
 
 Array2DTest::~Array2DTest() {}
 
-void Array2DTest::add(int i, IPersist *obj)
+void Array2DTest::add(int i, Persistable *obj)
 {
 	array->append(i, obj);
 }

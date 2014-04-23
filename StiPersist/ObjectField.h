@@ -2,7 +2,7 @@
 #define OBJECTFIELD_H
 
 #include "Field.h"
-#include "IPersist.h"
+#include "Persistable.h"
 
 namespace StiPersist
 {
@@ -30,15 +30,15 @@ namespace StiPersist
 			
 			/// \brief Set Object Pointer
 			/// \param m_object IPersist Pointer
-			void setObject(IPersist *m_object);
+			void setObject(Persistable *m_object);
 			
 			/// \brief Get Object Pointer
 			/// \return IPersist Pointer
-			IPersist* getObject(void);
+			Persistable* getObject(void);
 			
 		protected:
 			/// \brief Object pointer
-			IPersist *object;
+			Persistable *object;
 		};
 	}
 

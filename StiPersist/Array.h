@@ -1,7 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 #include <vector>
 
 namespace StiPersist
@@ -28,16 +28,16 @@ namespace StiPersist
 			/// \brief Insert an element at index
 			/// \param i Index
 			/// \param element Element
-			void insert(int i, IPersist *element);
+			void insert(int i, Persistable *element);
 			
 			/// \brief Append an element to the end of the array
 			/// \param element Element
-			void append(IPersist *element);
+			void append(Persistable *element);
 			
 			/// \brief Get Element at index
 			/// \param i Index
 			/// \return Element
-			IPersist* get(int i);
+			Persistable* get(int i);
 			
 			template <typename T>
 			T* get(int i)
@@ -62,7 +62,7 @@ namespace StiPersist
 			unsigned int length;
 			
 			/// \brief Wrapped Vector
-			std::vector<IPersist*> elements;
+			std::vector<Persistable*> elements;
 		};
 	}
 }

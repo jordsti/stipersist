@@ -13,14 +13,14 @@ ArrayTest::ArrayTest()
 	array = new Array();
 }
 
-ArrayTest::ArrayTest(unsigned int length) : IPersist()
+ArrayTest::ArrayTest(unsigned int length) : Persistable()
 {
 	array = new Array(length);
 }
 
 ArrayTest::~ArrayTest(){}
 
-void ArrayTest::add(IPersist *element)
+void ArrayTest::add(Persistable *element)
 {
 	array->append(element);
 }

@@ -1,14 +1,14 @@
 #ifndef FIELDSOBJECT_H
 #define FIELDSOBJECT_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 namespace StiPersist
 {
 	/// \class FieldsObject
-	/// \brief Implementation of IPersist. This class is used to populate container element has a FieldsObject
+	/// \brief Implementation of Persistable. This class is used to populate container element has a FieldsObject
 	class FieldsObject :
-		public IPersist
+		public Persistable
 	{
 	public:
 		/// \brief Constructor
@@ -17,7 +17,7 @@ namespace StiPersist
 		/// \brief Destructor
 		virtual ~FieldsObject();
 		
-		/// \brief Implementation of IPersist
+		/// \brief Implementation of Persistable
 		void fromFields(void);
 		
 		/// \brief Create fields from Chunk

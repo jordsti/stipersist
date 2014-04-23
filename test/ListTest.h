@@ -1,11 +1,11 @@
 #ifndef LISTTEST_H
 #define LISTTEST_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 #include "List.h"
 
 class ListTest :
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	ListTest();

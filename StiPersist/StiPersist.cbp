@@ -66,8 +66,8 @@
 		<Unit filename="FieldsObject.h" />
 		<Unit filename="FloatField.cpp" />
 		<Unit filename="FloatField.h" />
-		<Unit filename="IPersist.cpp" />
-		<Unit filename="IPersist.h" />
+		<Unit filename="Persistable.cpp" />
+		<Unit filename="Persistable.h" />
 		<Unit filename="IntegerField.cpp" />
 		<Unit filename="IntegerField.h" />
 		<Unit filename="Iterator.h" />

@@ -9,20 +9,20 @@ namespace StiPersist
 		{
 			first = nullptr;
 		}
-		
+
 		Map::~Map() {}
-		
-		void Map::append(std::string key, IPersist *element)
+
+		void Map::append(std::string key, Persistable *element)
 		{
 			MapNode *node = new MapNode(key, element);
-			
+
 			append(node);
 		}
-		
+
 		void Map::append(Map *map)
 		{
 			MapNode *mfirst = map->getFirst();
-			
+
 			if(mfirst != nullptr)
 			{
 				MapNode *last = getLast();
@@ -36,7 +36,7 @@ namespace StiPersist
 				}
 			}
 		}
-		
+
 		void Map::append(MapNode *node)
 		{
 			if(first == nullptr)
@@ -48,11 +48,11 @@ namespace StiPersist
 				getLast()->setNext(node);
 			}
 		}
-		
+
 		MapNode* Map::get(std::string key)
 		{
 			MapNode *current = first;
-			
+
 			if(current != nullptr)
 			{
 				while(current != nullptr)
@@ -61,24 +61,24 @@ namespace StiPersist
 					{
 						return current;
 					}
-					
+
 					current = current->getNext();
 				}
 			}
-			
+
 			return nullptr;
 		}
-		
+
 		bool Map::contains(std::string key)
 		{
 			return (get(key) != nullptr);
 		}
-		
+
 		MapNode* Map::remove(std::string key)
 		{
 			MapNode *current = first;
 			MapNode *prev = nullptr;
-			
+
 			if(current != nullptr)
 			{
 				while(current != nullptr)
@@ -93,26 +93,26 @@ namespace StiPersist
 						{
 							first = nullptr;
 						}
-						
+
 						return current;
 					}
-					
+
 					prev = current;
 					current = current->getNext();
 				}
 			}
-			
+
 		}
-		
+
 		MapNode* Map::getFirst(void)
 		{
 			return first;
 		}
-		
+
 		MapNode* Map::getLast(void)
 		{
 			MapNode *current = first;
-			
+
 			if(first == nullptr)
 			{
 				return current;
@@ -123,36 +123,36 @@ namespace StiPersist
 				{
 					current = current->getNext();
 				}
-				
+
 				return current;
 			}
 		}
-		
+
 		int Map::size(void)
 		{
 			int count = 0;
-			
+
 			MapNode *current = first;
-			
+
 			if(current == nullptr)
 			{
 				return count;
 			}
-			
+
 			while(current != nullptr)
 			{
 				current = current->getNext();
 				count++;
 			}
-			
+
 			return count;
 		}
-		
+
 		void Map::clear(void)
 		{
 			//todo
 		}
-		
+
 		MapIterator* Map::getIterator(void)
 		{
 			MapIterator *iterator = new MapIterator(this);

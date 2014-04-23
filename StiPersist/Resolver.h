@@ -26,8 +26,8 @@ namespace StiPersist
 		/// \brief Build a inner child object field
 		/// \param nameChunk Field Name Chunk
 		/// \param dataChunk Field Data Chunk
-		/// \param parent IPersist Parent Pointer
-		virtual void buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, IPersist *parent) = 0;
+		/// \param parent Persistable Parent Pointer
+		virtual void buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, Persistable *parent) = 0;
 	protected:
 	
 		/// \brief Constructor

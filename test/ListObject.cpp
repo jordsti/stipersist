@@ -2,12 +2,12 @@
 
 using namespace StiPersist;
 
-ListObject::ListObject() : IPersist()
+ListObject::ListObject() : Persistable()
 {
 	value = 0;
 }
 
-ListObject::ListObject(int m_value) : IPersist()
+ListObject::ListObject(int m_value) : Persistable()
 {
 	value = m_value;
 }

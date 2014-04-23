@@ -31,7 +31,7 @@ namespace StiPersist
 			
 			/// \brief Get current element
 			/// \return Element
-			IPersist *getElement(void);
+			Persistable *getElement(void);
 			
 			template <typename T>
 			T* getElement(void)

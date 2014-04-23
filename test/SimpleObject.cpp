@@ -8,7 +8,7 @@
 using namespace StiPersist;
 using namespace Data;
 
-SimpleObject::SimpleObject() : IPersist()
+SimpleObject::SimpleObject() : Persistable()
 {
 	integer = 2000;
 	text = "bla bla bla testing one two";

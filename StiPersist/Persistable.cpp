@@ -1,4 +1,4 @@
-#include "IPersist.h"
+#include "Persistable.h"
 #include <iostream>
 #include <fstream>
 #include "Resolver.h"
@@ -7,41 +7,41 @@
 namespace StiPersist
 {
 	//static
-	Resolver* IPersist::_defaultResolver = new DefaultResolver();
+	Resolver* Persistable::_defaultResolver = new DefaultResolver();
 
-	void IPersist::SetDefaultResolver(Resolver *m_resolver)
+	void Persistable::SetDefaultResolver(Resolver *m_resolver)
 	{
 		_defaultResolver = m_resolver;
 	}
 	
 	//end static
-	IPersist::IPersist()
+	Persistable::Persistable()
 	{
 		populated = false;
 		resolver = _defaultResolver;
 	}
 
-	IPersist::~IPersist()
+	Persistable::~Persistable()
 	{
 	
 	}
 
-	bool IPersist::isPopulated(void)
+	bool Persistable::isPopulated(void)
 	{
 		return populated;
 	}
 	
-	void IPersist::addChild(std::string childName, IPersist *child)
+	void Persistable::addChild(std::string childName, Persistable *child)
 	{
 		childs.insert(std::make_pair(childName, child));
 	}
 	
-	void IPersist::addField(Data::Field *field)
+	void Persistable::addField(Data::Field *field)
 	{
 		fields.push_back(field);
 	}
 	
-	Data::Field* IPersist::getField(std::string fname)
+	Data::Field* Persistable::getField(std::string fname)
 	{
 		std::list<Data::Field*>::iterator lit(fields.begin()), lend(fields.end());
 		
@@ -56,12 +56,12 @@ namespace StiPersist
 		return nullptr;
 	}
 	
-	IPersist* IPersist::getChild(std::string childName)
+	Persistable* Persistable::getChild(std::string childName)
 	{
 		return childs[childName];
 	}
 	
-	Data::Buffer* IPersist::getChunkBuffer(void)
+	Data::Buffer* Persistable::getChunkBuffer(void)
 	{
 		_populateFields();
 		
@@ -102,7 +102,7 @@ namespace StiPersist
 		return buffer;
 	}
 	
-	void IPersist::load(std::string source)
+	void Persistable::load(std::string source)
 	{
 		if(childs.size() == 0)
 		{
@@ -157,7 +157,7 @@ namespace StiPersist
 		_fromFields();
 	}
 	
-	void IPersist::save(std::string destination)
+	void Persistable::save(std::string destination)
 	{
 		Data::Buffer *buffer = getChunkBuffer();
 		
@@ -175,13 +175,13 @@ namespace StiPersist
 		delete buffer;
 	}
 	
-	void IPersist::_populateChilds(void)
+	void Persistable::_populateChilds(void)
 	{
-		std::map<std::string, IPersist*>::iterator lit(childs.begin()), lend(childs.end());
+		std::map<std::string, Persistable*>::iterator lit(childs.begin()), lend(childs.end());
 		for(;lit!=lend;++lit)
 		{
 			std::string name = lit->first;
-			IPersist *child = lit->second;
+			Persistable *child = lit->second;
 			
 			Data::ObjectField *ofield = new Data::ObjectField(name);
 			ofield->setObject(child);
@@ -191,7 +191,7 @@ namespace StiPersist
 		}
 	}
 	
-	void IPersist::_populateFields(void)
+	void Persistable::_populateFields(void)
 	{
 		if(!populated)
 		{
@@ -200,7 +200,7 @@ namespace StiPersist
 		}
 	}
 
-	void IPersist::_fromFields(void)
+	void Persistable::_fromFields(void)
 	{
 		if(!populated)
 		{

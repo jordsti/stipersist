@@ -37,7 +37,7 @@ namespace StiPersist
 			
 			while(it->moveNext())
 			{
-				IPersist *obj = it->getElement();
+				Persistable *obj = it->getElement();
 				
 				Buffer *ebuffer = obj->getChunkBuffer();
 				

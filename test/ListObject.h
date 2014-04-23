@@ -1,10 +1,10 @@
 #ifndef LISTOBJECT_H
 #define LISTOBJECT_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 class ListObject : 
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	ListObject();

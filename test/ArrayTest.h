@@ -2,17 +2,17 @@
 #define ARRAYTEST_H
 
 #include "Array.h"
-#include "IPersist.h"
+#include "Persistable.h"
 
 class ArrayTest :
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	ArrayTest();
 	ArrayTest(unsigned int length);
 	virtual ~ArrayTest();
 	
-	void add(IPersist *element);
+	void add(Persistable *element);
 	void print(void);
 	void fromFields(void);
 protected:

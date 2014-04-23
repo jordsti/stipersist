@@ -59,7 +59,7 @@ namespace StiPersist
 			}
 		}
 		
-		IPersist* Array2DIterator::getElement(void)
+		Persistable* Array2DIterator::getElement(void)
 		{
 			return array->get(current_i, current_j);
 		}

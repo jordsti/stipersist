@@ -1,7 +1,7 @@
 #ifndef INODE_H
 #define INODE_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 namespace StiPersist
 {
@@ -10,8 +10,8 @@ namespace StiPersist
 		class INode
 		{
 		public:
-			virtual IPersist* getElement(void) = 0;
-			virtual void setElement(IPersist *m_element) = 0;
+			virtual Persistable* getElement(void) = 0;
+			virtual void setElement(Persistable *m_element) = 0;
 			virtual bool hasNext(void) = 0;
 			virtual bool isEmpty(void) = 0;
 		};

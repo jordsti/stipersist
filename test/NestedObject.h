@@ -1,11 +1,11 @@
 #ifndef NESTEDOBJECT_H
 #define NESTEDOBJECT_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 #include "SimpleObject.h"
 
 class NestedObject : 
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	NestedObject();

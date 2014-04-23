@@ -9,7 +9,7 @@ using namespace StiPersist;
 using namespace Data;
 using namespace Container;
 
-ListTest::ListTest() : IPersist()
+ListTest::ListTest() : Persistable()
 {
 	list = new List();
 }

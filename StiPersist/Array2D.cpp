@@ -22,7 +22,7 @@ namespace StiPersist
 			
 			for(int i=0; i<i_length; i++)
 			{
-				elements.push_back(std::vector<IPersist*>());
+				elements.push_back(std::vector<Persistable*>());
 				elements[i].reserve(j_length);
 			}
 			
@@ -34,7 +34,7 @@ namespace StiPersist
 			return new Array2DIterator(this);
 		}
 			
-		IPersist* Array2D::get(int i, int j)
+		Persistable* Array2D::get(int i, int j)
 		{
 			if(i < i_length && j < j_length)
 			{
@@ -47,11 +47,11 @@ namespace StiPersist
 			}
 		}
 		
-		void Array2D::insert(int i, int j, IPersist *element)
+		void Array2D::insert(int i, int j, Persistable *element)
 		{
 			if(i < i_length && j < j_length)
 			{
-				std::vector<IPersist*>::iterator lit (elements[i].begin());
+				std::vector<Persistable*>::iterator lit (elements[i].begin());
 				
 				elements[i].insert(lit, j, element);
 			}
@@ -61,7 +61,7 @@ namespace StiPersist
 			}
 		}
 		
-		void Array2D::append(int i, IPersist *element)
+		void Array2D::append(int i, Persistable *element)
 		{
 			if(i < i_length)
 			{
@@ -85,11 +85,11 @@ namespace StiPersist
 			//todo
 			if(clearData && i_length > 0 && j_length > 0)
 			{
-				std::vector< std::vector<IPersist*> >::iterator lit(elements.begin()), lend(elements.end());
+				std::vector< std::vector<Persistable*> >::iterator lit(elements.begin()), lend(elements.end());
 				
 				for(;lit!=lend;++lit)
 				{
-					std::vector<IPersist*>::iterator lit2 ((*lit).begin()), lend2((*lit).end());
+					std::vector<Persistable*>::iterator lit2 ((*lit).begin()), lend2((*lit).end());
 					for(;lit2!=lend2;++lit2)
 					{
 						delete (*lit2);

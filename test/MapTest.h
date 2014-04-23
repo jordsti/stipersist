@@ -1,11 +1,11 @@
 #ifndef MAPTEST_H
 #define MAPTEST_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 #include "Map.h"
 
 class MapTest :
-	public StiPersist::IPersist
+	public StiPersist::Persistable
 {
 public:
 	MapTest();

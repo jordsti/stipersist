@@ -1,7 +1,7 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
 
-#include "IPersist.h"
+#include "Persistable.h"
 
 namespace StiPersist
 {
@@ -21,7 +21,7 @@ namespace StiPersist
 			virtual bool hasNext(void) = 0;
 			virtual bool moveNext(void) = 0;
 			
-			virtual IPersist* getElement(void) = 0;
+			virtual Persistable* getElement(void) = 0;
 			
 			virtual IteratorType getType(void) = 0;
 		};

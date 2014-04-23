@@ -14,19 +14,19 @@ namespace StiPersist
 		public:
 			ListIterator(List *m_list);
 			virtual ~ListIterator();
-			
+
 			bool hasNext(void);
 			bool moveNext(void);
-			
-			IPersist* getElement(void);
-			
+
+			Persistable* getElement(void);
+
 			template <typename T>
 			T* getElement(void)
 			{
 				return dynamic_cast<T*>(current->getElement());
 			}
-			
-			
+
+
 			IteratorType getType(void);
 		private:
 			List *list;

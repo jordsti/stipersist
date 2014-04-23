@@ -1,5 +1,5 @@
-#ifndef IPERSIST_H
-#define IPERSIST_H
+#ifndef PERSISTABLE_H
+#define PERSISTABLE_H
 
 #include "Field.h"
 #include <list>
@@ -10,13 +10,13 @@ namespace StiPersist
 {
 	class Resolver;
 
-	/// \class IPersist
+	/// \class Persistable
 	/// \brief Class to inherit to handle serialization of your object
-	class IPersist
+	class Persistable
 	{
 	public:
 		/// \brief Destructor
-		virtual ~IPersist();
+		virtual ~Persistable();
 		
 		/// \brief Save the object
 		/// \param destination Filepath
@@ -32,8 +32,8 @@ namespace StiPersist
 		
 		/// \brief Get Child Object by Name
 		/// \param childName Child Name
-		/// \return IPersist Child Pointer
-		IPersist* getChild(std::string childName);
+		/// \return Persistable Child Pointer
+		Persistable* getChild(std::string childName);
 		
 		/// \brief Set Default Resolver
 		/// \param m_resolver Resolver Pointer
@@ -57,7 +57,7 @@ namespace StiPersist
 		
 	protected:
 		/// \brief Constructor
-		IPersist();
+		Persistable();
 		
 		
 		/// \brief Is the field are populated
@@ -66,8 +66,8 @@ namespace StiPersist
 		
 		/// \brief Add a Child Object
 		/// \param childName Child Name
-		/// \param child IPersist Pointer
-		virtual void addChild(std::string childName, IPersist *child);
+		/// \param child Persistable Pointer
+		virtual void addChild(std::string childName, Persistable *child);
 		
 		/// \brief Method to implement on your object. Create fields from your attributes
 		virtual void populateFields(void) = 0;
@@ -79,7 +79,7 @@ namespace StiPersist
 		std::list<Data::Field*> fields;
 		
 		/// \brief Childs Objects
-		std::map<std::string, IPersist*> childs;
+		std::map<std::string, Persistable*> childs;
 	private:
 		/// \brief Private populate childs operation
 		void _populateChilds(void);

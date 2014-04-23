@@ -11,6 +11,7 @@
 #include "ArrayField.h"
 #include "Array2DField.h"
 #include "Logger.h"
+
 namespace StiPersist
 {
 
@@ -36,12 +37,12 @@ namespace StiPersist
 		);
 	}
 	
-	void DefaultResolver::buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, IPersist *parent)
+	void DefaultResolver::buildObjectField(Data::Chunk *nameChunk, Data::Chunk *dataChunk, Persistable *parent)
 	{
 		//todo
 		std::string name = nameChunk->toString();
 		
-		IPersist *child = parent->getChild(name);
+		Persistable *child = parent->getChild(name);
 		
 		if(child != nullptr)
 		{

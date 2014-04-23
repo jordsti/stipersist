@@ -10,7 +10,7 @@
 
 namespace StiPersist
 {
-	FieldsObject::FieldsObject() : IPersist() {}
+	FieldsObject::FieldsObject() : Persistable() {}
 	FieldsObject::~FieldsObject() {}
 	
 	void FieldsObject::fromFields(void) {}

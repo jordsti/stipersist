@@ -52,7 +52,7 @@ namespace StiPersist
 			return index;
 		}
 		
-		IPersist* ArrayIterator::getElement(void)
+		Persistable* ArrayIterator::getElement(void)
 		{
 			return array->get(index);
 		}
