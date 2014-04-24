@@ -5,5 +5,8 @@
 		<Project filename="test/test.cbp">
 			<Depends filename="StiPersist/StiPersist.cbp" />
 		</Project>
+		<Project filename="Samples/Samples.cbp">
+			<Depends filename="StiPersist/StiPersist.cbp" />
+		</Project>
 	</Workspace>
 </CodeBlocks_workspace_file>
