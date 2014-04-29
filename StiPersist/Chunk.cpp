@@ -6,60 +6,60 @@ namespace StiPersist
 
 	namespace Data
 	{
-	
+
 		Chunk::Chunk()
 		{
 			data = 0;
 			length = 0;
 			clearData = false;
 		}
-		
+
 		Chunk::Chunk(char *m_data, unsigned int m_length)
 		{
 			data = m_data;
 			length = m_length;
-			clearData = false;
+			clearData = true;
 		}
-		
+
 		void Chunk::setClearData(bool m_clearData)
 		{
 			clearData = m_clearData;
 		}
-		
+
 		bool Chunk::getClearData(void)
 		{
 			return clearData;
 		}
-		
+
 		unsigned int Chunk::getLength(void)
 		{
 			return length;
 		}
-		
+
 		char* Chunk::getData(void)
 		{
 			return data;
 		}
-		
+
 		void Chunk::setData(char *m_data, unsigned int m_length)
 		{
 			data = m_data;
 			length = m_length;
 		}
-		
+
 		std::string Chunk::toString(void)
 		{
 			std::string text = data;
 			return text;
 		}
-		
+
 		ChunkMarker* Chunk::getMarker(void)
 		{
 			ChunkMarker *marker = new ChunkMarker();
 			marker->length = length;
 			return marker;
 		}
-		
+
 		Chunk::~Chunk()
 		{
 			if(clearData && data != 0)
@@ -67,8 +67,8 @@ namespace StiPersist
 				delete data;
 			}
 		}
-	
-	
+
+
 		Chunk* Chunk::FromFieldMarker(FieldMarker *marker)
 		{
 			unsigned int length = sizeof(FieldMarker);
@@ -77,7 +77,7 @@ namespace StiPersist
 			Chunk *chunk = new Chunk(data, length);
 			return chunk;
 		}
-	
+
 		Chunk* Chunk::FromString(std::string text)
 		{
 			unsigned int length = text.size() + 1;
@@ -88,7 +88,7 @@ namespace StiPersist
 			Chunk *chunk = new Chunk(c_data, length);
 			return chunk;
 		}
-		
+
 		Chunk* Chunk::FromChunkMarker(ChunkMarker *marker)
 		{
 			unsigned int length = sizeof(ChunkMarker);
@@ -98,5 +98,5 @@ namespace StiPersist
 			return chunk;
 		}
 	}
-	
+
 }

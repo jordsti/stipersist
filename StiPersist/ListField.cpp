@@ -14,7 +14,7 @@ namespace StiPersist
 
 		Chunk* ListField::getDataChunk(void)
 		{
-			Buffer *buffer = new Buffer();
+			Buffer buffer = Buffer();
 			Container::ListIterator *iterator = list->getIterator();
 			ListNodeMarker *marker = new ListNodeMarker();
 
@@ -32,12 +32,13 @@ namespace StiPersist
 
 				Chunk *mchunk = new Chunk(c_marker, sizeof(ListNodeMarker));
 
-				buffer->append(mchunk);
-				buffer->append(ichunk);
+				buffer.append(mchunk);
+				buffer.append(ichunk);
 
+                delete ibuffer;
 			}
 
-			return buffer->getChunk();
+			return buffer.getChunk();
 		}
 
 		void ListField::fromDataChunk(Chunk *dataChunk)
